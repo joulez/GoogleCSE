@@ -1,0 +1,746 @@
+{
+ "kind": "customsearch#search",
+ "url": {
+  "type": "application/json",
+  "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+ },
+ "queries": {
+  "nextPage": [
+   {
+    "title": "Google Custom Search - symphony x",
+    "totalResults": "8980000",
+    "searchTerms": "symphony x",
+    "count": 10,
+    "startIndex": 11,
+    "inputEncoding": "utf8",
+    "outputEncoding": "utf8",
+    "safe": "off",
+    "cx": "009672557423963828148:mzxgb9ok-ts"
+   }
+  ],
+  "request": [
+   {
+    "title": "Google Custom Search - symphony x",
+    "totalResults": "8980000",
+    "searchTerms": "symphony x",
+    "count": 10,
+    "startIndex": 11,
+    "inputEncoding": "utf8",
+    "outputEncoding": "utf8",
+    "safe": "off",
+    "cx": "009672557423963828148:mzxgb9ok-ts"
+   }
+  ]
+ },
+ "context": {
+  "title": "youtube"
+ },
+ "searchInformation": {
+  "searchTime": 0.32905,
+  "formattedSearchTime": "0.33",
+  "totalResults": "8980000",
+  "formattedTotalResults": "8,980,000"
+ },
+ "items": [
+  {
+   "kind": "customsearch#result",
+   "title": "Symphony X | The Official Symphony X Website",
+   "htmlTitle": "\u003cb\u003eSymphony X\u003c/b\u003e | The Official \u003cb\u003eSymphony X\u003c/b\u003e Website",
+   "link": "http://www.symphonyx.com/",
+   "displayLink": "www.symphonyx.com",
+   "snippet": "In true 'no update until there's something to say' form, the Symphony X camp has \nbeen quiet as of late. Don't let the silence fool you, though; they've been busy.",
+   "htmlSnippet": "In true &#39;no update until there&#39;s something to say&#39; form, the \u003cb\u003eSymphony X\u003c/b\u003e camp has \u003cbr\u003e\nbeen quiet as of late. Don&#39;t let the silence fool you, though; they&#39;ve been busy.",
+   "cacheId": "D3JM4T_AFlcJ",
+   "formattedUrl": "www.symphonyx.com/",
+   "htmlFormattedUrl": "www.\u003cb\u003esymphonyx\u003c/b\u003e.com/",
+   "pagemap": {
+    "cse_image": [
+     {
+      "src": "http://www.symphonyx.com/site/wp-content/uploads/2014/11/smx-bf-sale2015-1024x456.jpg"
+     }
+    ],
+    "cse_thumbnail": [
+     {
+      "width": "337",
+      "height": "150",
+      "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSGgVyk_-ofYLKfqf1a20RF7aLgHFkkdU4whA-7IMHZ0X20aMO3L66ImMPp"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Symphony X - Wikipedia, the free encyclopedia",
+   "htmlTitle": "\u003cb\u003eSymphony X\u003c/b\u003e - Wikipedia, the free encyclopedia",
+   "link": "http://en.wikipedia.org/wiki/Symphony_X",
+   "displayLink": "en.wikipedia.org",
+   "snippet": "Symphony X is an American progressive metal band from Middletown, New \nJersey. Founded in 1994, the band consists of guitarist Michael Romeo, \nkeyboardist ...",
+   "htmlSnippet": "\u003cb\u003eSymphony X\u003c/b\u003e is an American progressive metal band from Middletown, New \u003cbr\u003e\nJersey. Founded in 1994, the band consists of guitarist Michael Romeo, \u003cbr\u003e\nkeyboardist&nbsp;...",
+   "cacheId": "5yJA172ajRUJ",
+   "formattedUrl": "en.wikipedia.org/wiki/Symphony_X",
+   "htmlFormattedUrl": "en.wikipedia.org/wiki/\u003cb\u003eSymphony\u003c/b\u003e_\u003cb\u003eX\u003c/b\u003e",
+   "pagemap": {
+    "cse_image": [
+     {
+      "src": "http://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/W0927-Hellfest2013_SymphonyX_MichaelRomeo_JohnMacaluso_RussellAllen_MichaelPinnella_71542.JPG/250px-W0927-Hellfest2013_SymphonyX_MichaelRomeo_JohnMacaluso_RussellAllen_MichaelPinnella_71542.JPG"
+     }
+    ],
+    "cse_thumbnail": [
+     {
+      "width": "200",
+      "height": "133",
+      "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR6HX37YJOZjDuYs6xkI4sFr29xg26w3mFukqhkAT3SbmE0jFrnujufTvZe"
+     }
+    ],
+    "hcard": [
+     {
+      "fn": "Symphony X"
+     },
+     {
+      "fn": "Symphony X"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Symphony X - The Odyssey - YouTube",
+   "htmlTitle": "\u003cb\u003eSymphony X\u003c/b\u003e - The Odyssey - YouTube",
+   "link": "http://www.youtube.com/watch?v=MaN3pwBsRf8",
+   "displayLink": "www.youtube.com",
+   "snippet": "Mar 16, 2011 ... Symphony X And my Favourite track by them The Odyssey Full song! Lyrics: [Part \nI Odysseus' Theme / Overture] [music / orchestration - Romeo] ...",
+   "htmlSnippet": "Mar 16, 2011 \u003cb\u003e...\u003c/b\u003e \u003cb\u003eSymphony X\u003c/b\u003e And my Favourite track by them The Odyssey Full song! Lyrics: [Part \u003cbr\u003e\nI Odysseus&#39; Theme / Overture] [music / orchestration - Romeo]&nbsp;...",
+   "cacheId": "QunFb-Z2LXMJ",
+   "formattedUrl": "www.youtube.com/watch?v=MaN3pwBsRf8",
+   "htmlFormattedUrl": "www.youtube.com/watch?v=MaN3pwBsRf8",
+   "pagemap": {
+    "cse_image": [
+     {
+      "src": "http://i.ytimg.com/vi/MaN3pwBsRf8/maxresdefault.jpg"
+     }
+    ],
+    "videoobject": [
+     {
+      "url": "http://www.youtube.com/watch?v=MaN3pwBsRf8",
+      "name": "Symphony X - The Odyssey",
+      "description": "Symphony X And my Favourite track by them The Odyssey Full song! Lyrics: [Part I Odysseus' Theme / Overture] [music / orchestration - Romeo] [instrumental] [...",
+      "paid": "False",
+      "channelid": "UCeSKa9esolJTMvj9ahUs4eg",
+      "videoid": "MaN3pwBsRf8",
+      "duration": "PT24M8S",
+      "unlisted": "False",
+      "thumbnailurl": "http://i.ytimg.com/vi/MaN3pwBsRf8/maxresdefault.jpg",
+      "embedurl": "https://www.youtube.com/embed/MaN3pwBsRf8",
+      "playertype": "HTML5 Flash",
+      "width": "960",
+      "height": "720",
+      "isfamilyfriendly": "True",
+      "regionsallowed": "AD,AE,AF,AG,AI,AL,AM,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH..."
+     }
+    ],
+    "person": [
+     {
+      "url": "http://www.youtube.com/user/GodisDead667"
+     },
+     {
+      "url": "https://plus.google.com/110142200696304502742"
+     }
+    ],
+    "cse_thumbnail": [
+     {
+      "width": "259",
+      "height": "194",
+      "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSm6LG0MBLmyraGnvIcmG5_7j3zCwr2ee5kvL4HNOgHDgPCU3nBYgVfCJyd"
+     }
+    ],
+    "metatags": [
+     {
+      "title": "Symphony X - The Odyssey",
+      "og:site_name": "YouTube",
+      "og:url": "http://www.youtube.com/watch?v=MaN3pwBsRf8",
+      "og:title": "Symphony X - The Odyssey",
+      "og:image": "http://i.ytimg.com/vi/MaN3pwBsRf8/maxresdefault.jpg",
+      "og:description": "Symphony X And my Favourite track by them The Odyssey Full song! Lyrics: [Part I Odysseus' Theme / Overture] [music / orchestration - Romeo] [instrumental] [...",
+      "al:ios:app_store_id": "544007664",
+      "al:ios:app_name": "YouTube",
+      "al:ios:url": "vnd.youtube://www.youtube.com/watch?v=MaN3pwBsRf8&feature=applinks",
+      "al:android:url": "http://www.youtube.com/watch?v=MaN3pwBsRf8&feature=applinks",
+      "al:android:app_name": "YouTube",
+      "al:android:package": "com.google.android.youtube",
+      "al:web:url": "http://www.youtube.com/watch?v=MaN3pwBsRf8&feature=applinks",
+      "og:type": "video",
+      "og:video": "http://www.youtube.com/v/MaN3pwBsRf8?version=3&autohide=1",
+      "og:video:secure_url": "https://www.youtube.com/v/MaN3pwBsRf8?version=3&autohide=1",
+      "og:video:type": "application/x-shockwave-flash",
+      "og:video:width": "960",
+      "og:video:height": "720",
+      "og:video:tag": "Symphony",
+      "fb:app_id": "87741124305",
+      "twitter:card": "player",
+      "twitter:site": "@youtube",
+      "twitter:url": "http://www.youtube.com/watch?v=MaN3pwBsRf8",
+      "twitter:title": "Symphony X - The Odyssey",
+      "twitter:description": "Symphony X And my Favourite track by them The Odyssey Full song! Lyrics: [Part I Odysseus' Theme / Overture] [music / orchestration - Romeo] [instrumental] [...",
+      "twitter:image": "http://i.ytimg.com/vi/MaN3pwBsRf8/maxresdefault.jpg",
+      "twitter:app:name:iphone": "YouTube",
+      "twitter:app:id:iphone": "544007664",
+      "twitter:app:name:ipad": "YouTube",
+      "twitter:app:id:ipad": "544007664",
+      "twitter:app:url:iphone": "vnd.youtube://www.youtube.com/watch?v=MaN3pwBsRf8&feature=applinks",
+      "twitter:app:url:ipad": "vnd.youtube://www.youtube.com/watch?v=MaN3pwBsRf8&feature=applinks",
+      "twitter:app:name:googleplay": "YouTube",
+      "twitter:app:id:googleplay": "com.google.android.youtube",
+      "twitter:app:url:googleplay": "http://www.youtube.com/watch?v=MaN3pwBsRf8",
+      "twitter:player": "https://www.youtube.com/embed/MaN3pwBsRf8",
+      "twitter:player:width": "960",
+      "twitter:player:height": "720",
+      "attribution": "CenturyMedia/"
+     }
+    ],
+    "imageobject": [
+     {
+      "url": "http://i.ytimg.com/vi/MaN3pwBsRf8/maxresdefault.jpg",
+      "width": "1280",
+      "height": "720"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Symphony X | Facebook",
+   "htmlTitle": "\u003cb\u003eSymphony X\u003c/b\u003e | Facebook",
+   "link": "https://www.facebook.com/symphonyx",
+   "displayLink": "www.facebook.com",
+   "snippet": "Symphony X. 434764 likes · 4081 talking about this. Symphony X's official FB \npage :) Please do not post ads for other bands on our wall; they will just...",
+   "htmlSnippet": "\u003cb\u003eSymphony X\u003c/b\u003e. 434764 likes · 4081 talking about this. \u003cb\u003eSymphony X&#39;s\u003c/b\u003e official FB \u003cbr\u003e\npage :) Please do not post ads for other bands on our wall; they will just...",
+   "cacheId": "bcbuQ_DI23kJ",
+   "formattedUrl": "https://www.facebook.com/symphonyx",
+   "htmlFormattedUrl": "https://www.facebook.com/\u003cb\u003esymphonyx\u003c/b\u003e",
+   "pagemap": {
+    "cse_image": [
+     {
+      "src": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/c42.24.301.301/s160x160/533104_10150627024341577_1146440176_n.jpg?oh=4c1476d3078227d1568efc46e80a6818&oe=553CD53D&__gda__=1429799884_d9bbac8f6b9cd18e771db14142a77f66"
+     }
+    ],
+    "organization": [
+     {
+      "name": "Symphony X"
+     }
+    ],
+    "cse_thumbnail": [
+     {
+      "width": "128",
+      "height": "128",
+      "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTPjr_WfmR_3xs62H9lSA6aVAU737tUlwS7TWiFyYL5lBKo8qfL78KERPLU"
+     }
+    ],
+    "metatags": [
+     {
+      "referrer": "default",
+      "og:title": "Symphony X",
+      "og:type": "band",
+      "og:url": "https://www.facebook.com/symphonyx",
+      "og:site_name": "Facebook",
+      "og:image": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/c42.24.301.301/s200x200/533104_10150627024341577_1146440176_n.jpg?oh=9e1f25317ba9df1ca290bf1a5ffdc822&oe=5543D558&__gda__=1426486953_076660903504c5e5154fde0eac717e87",
+      "og:description": "Symphony X's official FB page :) Please do not post ads for other bands on our wall; they will just..."
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Symphony X - YouTube",
+   "htmlTitle": "\u003cb\u003eSymphony X\u003c/b\u003e - YouTube",
+   "link": "http://www.youtube.com/user/symphonyX",
+   "displayLink": "www.youtube.com",
+   "snippet": "Official music video for SYMPHONY X \"The End of Innocence\" Subscribe to \nSymphony X: http://bit.ly/subs-symphyx-yt. Subscribe to Nuclear Blast: ...",
+   "htmlSnippet": "Official music video for \u003cb\u003eSYMPHONY X\u003c/b\u003e &quot;The End of Innocence&quot; Subscribe to \u003cbr\u003e\n\u003cb\u003eSymphony X\u003c/b\u003e: http://bit.ly/subs-symphyx-yt. Subscribe to Nuclear Blast:&nbsp;...",
+   "cacheId": "xSQebzTBGBEJ",
+   "formattedUrl": "www.youtube.com/user/symphonyX",
+   "htmlFormattedUrl": "www.youtube.com/user/\u003cb\u003esymphonyX\u003c/b\u003e",
+   "pagemap": {
+    "cse_image": [
+     {
+      "src": "https://yt3.ggpht.com/-rBlvmNA6Efg/AAAAAAAAAAI/AAAAAAAAAAA/QJ9wbp8H98I/s900-c-k-no/photo.jpg"
+     }
+    ],
+    "person": [
+     {
+      "url": "http://www.youtube.com/user/symphonyX"
+     },
+     {
+      "url": "https://plus.google.com/106657116896947762604"
+     },
+     {
+      "url": "http://www.youtube.com/user/symphonyX"
+     },
+     {
+      "url": "https://plus.google.com/106657116896947762604"
+     }
+    ],
+    "cse_thumbnail": [
+     {
+      "width": "225",
+      "height": "225",
+      "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRiEcpXhNGZkxFyscWlmP1wawC9gbalBqZezM0_JcpZyi5m2EVVNv-qanjY"
+     }
+    ],
+    "metatags": [
+     {
+      "title": "Symphony X",
+      "og:site_name": "YouTube",
+      "og:url": "http://www.youtube.com/user/symphonyX",
+      "og:title": "Symphony X",
+      "og:image": "https://yt3.ggpht.com/-rBlvmNA6Efg/AAAAAAAAAAI/AAAAAAAAAAA/QJ9wbp8H98I/s900-c-k-no/photo.jpg",
+      "og:description": "The OFFICIAL Symphony X Channel",
+      "al:ios:app_store_id": "544007664",
+      "al:ios:app_name": "YouTube",
+      "al:ios:url": "vnd.youtube://user/UCyq381EQmuTZq37iO4eM9ow",
+      "al:android:url": "http://www.youtube.com/user/symphonyX?feature=applinks",
+      "al:android:app_name": "YouTube",
+      "al:android:package": "com.google.android.youtube",
+      "al:web:url": "http://www.youtube.com/user/symphonyX?feature=applinks",
+      "og:type": "profile",
+      "og:video:tag": "Symphony",
+      "fb:app_id": "87741124305",
+      "fb:profile_id": "symphonyx",
+      "twitter:card": "summary",
+      "twitter:site": "@youtube",
+      "twitter:url": "http://www.youtube.com/user/symphonyX",
+      "twitter:title": "Symphony X",
+      "twitter:description": "The OFFICIAL Symphony X Channel",
+      "twitter:image": "https://yt3.ggpht.com/-rBlvmNA6Efg/AAAAAAAAAAI/AAAAAAAAAAA/QJ9wbp8H98I/s900-c-k-no/photo.jpg",
+      "twitter:app:name:iphone": "YouTube",
+      "twitter:app:id:iphone": "544007664",
+      "twitter:app:name:ipad": "YouTube",
+      "twitter:app:id:ipad": "544007664",
+      "twitter:app:url:iphone": "vnd.youtube://user/UCyq381EQmuTZq37iO4eM9ow",
+      "twitter:app:url:ipad": "vnd.youtube://user/UCyq381EQmuTZq37iO4eM9ow",
+      "twitter:app:name:googleplay": "YouTube",
+      "twitter:app:id:googleplay": "com.google.android.youtube",
+      "twitter:app:url:googleplay": "http://www.youtube.com/user/symphonyX"
+     }
+    ],
+    "imageobject": [
+     {
+      "url": "https://yt3.ggpht.com/-rBlvmNA6Efg/AAAAAAAAAAI/AAAAAAAAAAA/QJ9wbp8H98I/s900-c-k-no/photo.jpg",
+      "width": "900",
+      "height": "900"
+     },
+     {
+      "url": "https://yt3.ggpht.com/-rBlvmNA6Efg/AAAAAAAAAAI/AAAAAAAAAAA/QJ9wbp8H98I/s900-c-k-no/photo.jpg",
+      "width": "900",
+      "height": "900"
+     }
+    ],
+    "youtubechannelv2": [
+     {
+      "url": "http://www.youtube.com/user/symphonyX",
+      "name": "Symphony X",
+      "description": "The OFFICIAL Symphony X Channel",
+      "paid": "False",
+      "channelid": "UCyq381EQmuTZq37iO4eM9ow",
+      "thumbnailurl": "https://yt3.ggpht.com/-rBlvmNA6Efg/AAAAAAAAAAI/AAAAAAAAAAA/QJ9wbp8H98I/s900-c-k-no/photo.jpg",
+      "isfamilyfriendly": "True",
+      "regionsallowed": "AD,AE,AF,AG,AI,AL,AM,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH..."
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Symphony X - Encyclopaedia Metallum: The Metal Archives",
+   "htmlTitle": "\u003cb\u003eSymphony X\u003c/b\u003e - Encyclopaedia Metallum: The Metal Archives",
+   "link": "http://www.metal-archives.com/bands/Symphony_X/172",
+   "displayLink": "www.metal-archives.com",
+   "snippet": "6 days ago ... Symphony X. Country of origin: United States; Location: Middletown, New Jersey; \nStatus: Active; Formed in: 1994. Genre: Progressive Power ...",
+   "htmlSnippet": "6 days ago \u003cb\u003e...\u003c/b\u003e \u003cb\u003eSymphony X\u003c/b\u003e. Country of origin: United States; Location: Middletown, New Jersey; \u003cbr\u003e\nStatus: Active; Formed in: 1994. Genre: Progressive Power&nbsp;...",
+   "cacheId": "57gGpuBIyAUJ",
+   "formattedUrl": "www.metal-archives.com/bands/Symphony_X/172",
+   "htmlFormattedUrl": "www.metal-archives.com/bands/\u003cb\u003eSymphony\u003c/b\u003e_\u003cb\u003eX\u003c/b\u003e/172",
+   "pagemap": {
+    "cse_image": [
+     {
+      "src": "http://www.metal-archives.com/images/1/7/2/172_photo.jpg"
+     }
+    ],
+    "cse_thumbnail": [
+     {
+      "width": "274",
+      "height": "184",
+      "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRRVyqb5a_SKlfr7oRlvMs7k5oBXseze-l6VpsNSrowiquvRT0A5db_tmQ"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Symphony X To Begin Recording New Album This Week ...",
+   "htmlTitle": "\u003cb\u003eSymphony X\u003c/b\u003e To Begin Recording New Album This Week \u003cb\u003e...\u003c/b\u003e",
+   "link": "http://www.blabbermouth.net/news/symphony-x-to-begin-recording-new-album-this-week/",
+   "displayLink": "www.blabbermouth.net",
+   "snippet": "Sep 8, 2014 ... American progressive metal veterans SYMPHONY X will enter the studio this \nweek to begin recording the follow-up to 2011's \"Iconoclast\" for an ...",
+   "htmlSnippet": "Sep 8, 2014 \u003cb\u003e...\u003c/b\u003e American progressive metal veterans \u003cb\u003eSYMPHONY X\u003c/b\u003e will enter the studio this \u003cbr\u003e\nweek to begin recording the follow-up to 2011&#39;s &quot;Iconoclast&quot; for an&nbsp;...",
+   "cacheId": "NN8F6lOh-jMJ",
+   "formattedUrl": "www.blabbermouth.net/.../symphony-x-to-begin-recording-new-album-this- week/",
+   "htmlFormattedUrl": "www.blabbermouth.net/.../\u003cb\u003esymphony\u003c/b\u003e-\u003cb\u003ex\u003c/b\u003e-to-begin-recording-new-album-this- week/",
+   "pagemap": {
+    "cse_image": [
+     {
+      "src": "http://assets.blabbermouth.net/media/symphonyx2012band_420x237-100x56.jpg"
+     }
+    ],
+    "cse_thumbnail": [
+     {
+      "width": "95",
+      "height": "53",
+      "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRpDFm7idB5v9IRlcNZbHASwT7dsD2nRD21KhJaG_izdo6MEQ6uEZPbHw"
+     }
+    ],
+    "metatags": [
+     {
+      "handheldfriendly": "True",
+      "mobileoptimized": "320",
+      "viewport": "width=device-width, initial-scale=1.0",
+      "og:site_name": "BLABBERMOUTH.NET",
+      "og:type": "article",
+      "og:locale": "en_US",
+      "fb:app_id": "135550159971166",
+      "fb:admins": "100001730153757",
+      "og:url": "http://www.blabbermouth.net/news/symphony-x-to-begin-recording-new-album-this-week/",
+      "og:title": "SYMPHONY X To Begin Recording New Album This Week",
+      "og:image": "http://assets.blabbermouth.net/media/symphonyx2012band_420x237-100x56.jpg",
+      "og:description": "American progressive metal veterans SYMPHONY X will enter the studio this week to begin recording the follow-up to 2011's \"Iconoclast\" for an early 2015 release. \"We're gonna start the drums on Tue...",
+      "article:published_time": "Mon, 08 Sep 2014 16:52:01 +0000",
+      "article:modified_time": "Mon, 08 Sep 2014 16:52:31 +0000",
+      "article:author": "Blabbermouth",
+      "article:section": "News"
+     }
+    ],
+    "blogposting": [
+     {
+      "articlebody": "Share0 Tweet0 Share0 Reddit0 Share0 American progressive metal veterans SYMPHONY X will enter the studio this week to begin recording the follow-up to 2011's \"Iconoclast\" for an early 2015..."
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Symphony X – Free listening, videos, concerts, stats and pictures at ...",
+   "htmlTitle": "\u003cb\u003eSymphony X\u003c/b\u003e – Free listening, videos, concerts, stats and pictures at \u003cb\u003e...\u003c/b\u003e",
+   "link": "http://www.last.fm/music/Symphony+X",
+   "displayLink": "www.last.fm",
+   "snippet": "Watch videos & listen free to Symphony X: Paradise Lost, Domination & more, \nplus 40 pictures. There are two bands with this title, a well-known metal band \nfrom ...",
+   "htmlSnippet": "Watch videos &amp; listen free to \u003cb\u003eSymphony X\u003c/b\u003e: Paradise Lost, Domination &amp; more, \u003cbr\u003e\nplus 40 pictures. There are two bands with this title, a well-known metal band \u003cbr\u003e\nfrom&nbsp;...",
+   "cacheId": "5UzgtLGY0u8J",
+   "formattedUrl": "www.last.fm/music/Symphony+X",
+   "htmlFormattedUrl": "www.last.fm/music/\u003cb\u003eSymphony\u003c/b\u003e+\u003cb\u003eX\u003c/b\u003e",
+   "pagemap": {
+    "musicalbum": [
+     {
+      "name": "Paradise Lost",
+      "image": "http://userserve-ak.last.fm/serve/300x300/54970835.png",
+      "url": "Paradise Lost 158,928 listeners",
+      "numtracks": "10"
+     },
+     {
+      "name": "Iconoclast",
+      "image": "http://userserve-ak.last.fm/serve/300x300/94234091.jpg",
+      "url": "Iconoclast 36,029 listeners",
+      "numtracks": "12"
+     },
+     {
+      "name": "The Divine Wings Of Tragedy",
+      "image": "http://userserve-ak.last.fm/serve/300x300/25584365.jpg",
+      "url": "The Divine Wings Of Tragedy 83,510 listeners",
+      "numtracks": "9"
+     },
+     {
+      "name": "The Odyssey",
+      "image": "http://userserve-ak.last.fm/serve/300x300/97086771.jpg",
+      "url": "The Odyssey 65,644 listeners",
+      "numtracks": "9"
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "http://userserve-ak.last.fm/serve/126/61866475.jpg"
+     }
+    ],
+    "musicrecording": [
+     {
+      "duration": "PT6M32S",
+      "url": "http://www.last.fm/music/Symphony+X/_/Paradise+Lost",
+      "inalbum": "Paradise Lost",
+      "interactioncount": "UserPlays:549,765",
+      "name": "Paradise Lost"
+     },
+     {
+      "duration": "PT4M18S",
+      "url": "http://www.last.fm/music/Symphony+X/_/Sea+Of+Lies",
+      "inalbum": "The Divine Wings Of Tragedy",
+      "interactioncount": "UserPlays:299,910",
+      "name": "Sea Of Lies"
+     },
+     {
+      "duration": "PT6M29S",
+      "url": "http://www.last.fm/music/Symphony+X/_/Domination",
+      "inalbum": "Paradise Lost",
+      "interactioncount": "UserPlays:401,301",
+      "name": "Domination"
+     },
+     {
+      "duration": "PT4M58S",
+      "url": "http://www.last.fm/music/Symphony+X/_/Of+Sins+And+Shadows",
+      "inalbum": "The Divine Wings Of Tragedy",
+      "interactioncount": "UserPlays:348,014",
+      "name": "Of Sins And Shadows"
+     },
+     {
+      "duration": "PT5M27S",
+      "url": "http://www.last.fm/music/Symphony+X/_/The+End+of+Innocence",
+      "inalbum": "Iconoclast",
+      "interactioncount": "UserPlays:129,725",
+      "name": "The End of Innocence"
+     },
+     {
+      "duration": "PT5M4S",
+      "url": "http://www.last.fm/music/Symphony+X/_/Eve+Of+Seduction",
+      "inalbum": "Paradise Lost",
+      "interactioncount": "UserPlays:385,078",
+      "name": "Eve Of Seduction"
+     },
+     {
+      "duration": "PT10M51S",
+      "url": "http://www.last.fm/music/Symphony+X/_/Iconoclast",
+      "inalbum": "Iconoclast",
+      "interactioncount": "UserPlays:127,101",
+      "name": "Iconoclast"
+     },
+     {
+      "duration": "PT2M34S",
+      "url": "http://www.last.fm/music/Symphony+X/_/Oculus+Ex+Inferni",
+      "inalbum": "Paradise Lost",
+      "interactioncount": "UserPlays:332,175",
+      "name": "Oculus Ex Inferni"
+     },
+     {
+      "duration": "PT9M10S",
+      "url": "http://www.last.fm/music/Symphony+X/_/When+All+Is+Lost",
+      "inalbum": "Iconoclast",
+      "interactioncount": "UserPlays:114,279",
+      "name": "When All Is Lost"
+     },
+     {
+      "duration": "PT7M53S",
+      "url": "http://www.last.fm/music/Symphony+X/_/Accolade+II",
+      "inalbum": "The Odyssey",
+      "interactioncount": "UserPlays:222,258",
+      "name": "Accolade II"
+     },
+     {
+      "duration": "PT5M32S",
+      "url": "http://www.last.fm/music/Symphony+X/_/Inferno+(unleash+The+Fire)",
+      "inalbum": "The Odyssey",
+      "interactioncount": "UserPlays:275,893",
+      "name": "Inferno (unleash The Fire)"
+     },
+     {
+      "duration": "PT4M49S",
+      "url": "http://www.last.fm/music/Symphony+X/_/The+Sacrifice",
+      "inalbum": "Paradise Lost",
+      "interactioncount": "UserPlays:316,468",
+      "name": "The Sacrifice"
+     },
+     {
+      "duration": "PT19M57S",
+      "url": "http://www.last.fm/music/Symphony+X/_/The+Divine+Wings+Of+Tragedy",
+      "inalbum": "The Divine Wings Of Tragedy",
+      "interactioncount": "UserPlays:191,977",
+      "name": "The Divine Wings Of Tragedy"
+     },
+     {
+      "duration": "PT6M47S",
+      "url": "http://www.last.fm/music/Symphony+X/_/Dehumanized",
+      "inalbum": "Iconoclast",
+      "interactioncount": "UserPlays:109,447",
+      "name": "Dehumanized"
+     },
+     {
+      "duration": "PT8M16S",
+      "url": "http://www.last.fm/music/Symphony+X/_/The+Walls+Of+Babylon",
+      "inalbum": "Paradise Lost",
+      "interactioncount": "UserPlays:284,561",
+      "name": "The Walls Of Babylon"
+     }
+    ],
+    "musicgroup": [
+     {
+      "name": "Symphony X",
+      "image": "http://userserve-ak.last.fm/serve/500/61866475/Symphony+X+Promo+photo+for+Iconoclast++20.jpg",
+      "interactioncount": "UserPlays:12753634"
+     }
+    ],
+    "metatags": [
+     {
+      "og:site_name": "Last.fm",
+      "fb:app_id": "192959324047861",
+      "og:title": "Symphony X",
+      "og:url": "http://www.last.fm/music/Symphony+X",
+      "og:image": "http://userserve-ak.last.fm/serve/126/61866475.jpg",
+      "og:type": "band",
+      "msapplication-tileimage": "http://cdn.last.fm/flatness/lastfm_win8_tile_144.png",
+      "msapplication-tilecolor": "#d51007",
+      "apple-itunes-app": "app-id=585235199"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Symphony X | Listen and Stream Free Music, Albums, New ...",
+   "htmlTitle": "\u003cb\u003eSymphony X\u003c/b\u003e | Listen and Stream Free Music, Albums, New \u003cb\u003e...\u003c/b\u003e",
+   "link": "https://myspace.com/symphonyx",
+   "displayLink": "myspace.com",
+   "snippet": "Symphony X's profile including the latest music, albums, songs, music videos and \nmore updates.",
+   "htmlSnippet": "\u003cb\u003eSymphony X&#39;s\u003c/b\u003e profile including the latest music, albums, songs, music videos and \u003cbr\u003e\nmore updates.",
+   "cacheId": "R1NVDZ16lkUJ",
+   "formattedUrl": "https://myspace.com/symphonyx",
+   "htmlFormattedUrl": "https://myspace.com/\u003cb\u003esymphonyx\u003c/b\u003e",
+   "pagemap": {
+    "cse_image": [
+     {
+      "src": "https://a2-images.myspacecdn.com/images03/23/ff256ec51de544c5aca45c4fbd24cf92/600x600.jpg"
+     }
+    ],
+    "cse_thumbnail": [
+     {
+      "width": "225",
+      "height": "225",
+      "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRoHX1n1KdqtQKo_lpH466ufMF3WVUu7KZTAYhDYe3b2RVOVfHXQ6lbM_Q"
+     }
+    ],
+    "musicrecording": [
+     {
+      "url": "/music/song/set-the-world-on-fire-the-lie-of-lies-24944476",
+      "inalbum": "Paradise Lost",
+      "image": "https://a2-images.myspacecdn.com/images03/2/2fe6a31449ba4fb1a07af3f51ec6c33c/300x300.jpg",
+      "name": "Set the World On Fire (The Lie of Lies)",
+      "duration": "PT5M54S"
+     },
+     {
+      "url": "/music/song/paradise-lost-61131783",
+      "inalbum": "Paradise Lost",
+      "image": "https://a2-images.myspacecdn.com/images03/2/2fe6a31449ba4fb1a07af3f51ec6c33c/300x300.jpg",
+      "name": "Paradise Lost",
+      "duration": "PT6M32S"
+     },
+     {
+      "url": "/music/song/eve-of-seduction-61131784",
+      "inalbum": "Paradise Lost",
+      "image": "https://a2-images.myspacecdn.com/images03/2/2fe6a31449ba4fb1a07af3f51ec6c33c/300x300.jpg",
+      "name": "Eve of Seduction",
+      "duration": "PT5M4S"
+     },
+     {
+      "url": "/music/song/inferno-unleash-the-fire-61138016",
+      "inalbum": "The Odyssey",
+      "image": "https://a4-images.myspacecdn.com/images03/30/ece4dbeb51dc41588c3ae958818a1fa2/300x300.jpg",
+      "name": "Inferno (unleash The Fire)",
+      "duration": "PT5M33S"
+     },
+     {
+      "url": "/music/song/seven-61131786",
+      "inalbum": "Paradise Lost",
+      "image": "https://a2-images.myspacecdn.com/images03/2/2fe6a31449ba4fb1a07af3f51ec6c33c/300x300.jpg",
+      "name": "Seven",
+      "duration": "PT7M"
+     },
+     {
+      "url": "/music/song/of-sins-and-shadows-63883131",
+      "inalbum": "The Divine Wings Of Tragedy",
+      "image": "https://x.myspacecdn.com/new/common/images/album.jpg",
+      "name": "Of Sins And Shadows",
+      "duration": "PT4M58S"
+     },
+     {
+      "url": "/music/song/smoke-and-mirrors-93796836",
+      "inalbum": "Twilight In Olympus",
+      "image": "https://a4-images.myspacecdn.com/images03/30/ad5e2fa29c8a4178a42d048aa958efc9/300x300.jpg",
+      "name": "Smoke and Mirrors",
+      "duration": "PT6M8S"
+     },
+     {
+      "url": "/music/song/king-of-terrors-89256284",
+      "inalbum": "The Odyssey",
+      "image": "https://a4-images.myspacecdn.com/images03/1/f56e94c0c46147de8585f8ebc5d8af1f/300x300.jpg",
+      "name": "King of Terrors",
+      "duration": "PT6M19S"
+     },
+     {
+      "url": "/music/song/lady-of-the-snow-93796841",
+      "inalbum": "Twilight In Olympus",
+      "image": "https://a4-images.myspacecdn.com/images03/30/ad5e2fa29c8a4178a42d048aa958efc9/300x300.jpg",
+      "name": "Lady of the Snow",
+      "duration": "PT7M7S"
+     },
+     {
+      "url": "/music/song/in-the-dragon-s-den-93796838",
+      "inalbum": "Twilight In Olympus",
+      "image": "https://a4-images.myspacecdn.com/images03/30/ad5e2fa29c8a4178a42d048aa958efc9/300x300.jpg",
+      "name": "In the Dragon's Den",
+      "duration": "PT3M58S"
+     }
+    ],
+    "metatags": [
+     {
+      "og:url": "https://myspace.com/symphonyx",
+      "og:description": "Symphony X's profile including the latest music, albums, songs, music videos and more updates.",
+      "og:type": "profile",
+      "og:image": "https://a2-images.myspacecdn.com/images03/23/ff256ec51de544c5aca45c4fbd24cf92/600x600.jpg",
+      "fb:app_id": "373499472709067",
+      "og:site_name": "Myspace",
+      "og:title": "Symphony X | Listen and  Stream Free Music, Albums, New Releases, Photos, Videos",
+      "title": "Symphony X | Listen and  Stream Free Music, Albums, New Releases, Photos, Videos",
+      "msapplication-tilecolor": "#313131",
+      "msapplication-tileimage": "https://x.myspacecdn.com/new/common/images/favicons/tile.png"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Symphony X (@symphonyx) | Twitter",
+   "htmlTitle": "\u003cb\u003eSymphony X\u003c/b\u003e (@\u003cb\u003esymphonyx\u003c/b\u003e) | Twitter",
+   "link": "https://twitter.com/symphonyx",
+   "displayLink": "twitter.com",
+   "snippet": "Symphony XVerified account · @symphonyx. The official Symphony X Twitter \npage, run by SymX staff :). New Jersey, USA. symphonyx.com. Joined December\n ...",
+   "htmlSnippet": "\u003cb\u003eSymphony X\u003c/b\u003eVerified account &middot; @\u003cb\u003esymphonyx\u003c/b\u003e. The official \u003cb\u003eSymphony X\u003c/b\u003e Twitter \u003cbr\u003e\npage, run by SymX staff :). New Jersey, USA. \u003cb\u003esymphonyx\u003c/b\u003e.com. Joined December\u003cbr\u003e\n&nbsp;...",
+   "cacheId": "D3tytLipms8J",
+   "formattedUrl": "https://twitter.com/symphonyx",
+   "htmlFormattedUrl": "https://twitter.com/\u003cb\u003esymphonyx\u003c/b\u003e",
+   "pagemap": {
+    "cse_image": [
+     {
+      "src": "https://pbs.twimg.com/profile_images/1309580938/SXCOVERARThalfsize_400x400.jpg"
+     }
+    ],
+    "cse_thumbnail": [
+     {
+      "width": "225",
+      "height": "225",
+      "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRuRuDLxIi1if2Gqxc7sUeaOMU_HQvGKuioMhIzl88GuzON-0f9elivuBy7"
+     }
+    ],
+    "metatags": [
+     {
+      "msapplication-tileimage": "//abs.twimg.com/favicons/win8-tile-144.png",
+      "msapplication-tilecolor": "#00aced",
+      "swift-page-name": "profile"
+     }
+    ]
+   }
+  }
+ ]
+}
