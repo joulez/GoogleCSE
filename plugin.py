@@ -41,12 +41,97 @@ except ImportError:
     # without the i18n module
     _ = lambda x:x
 
+from .local import GoogleAPI
+
+def validateEngine(irc, msg, args, state):
+    """Validate engines."""
+    callConverter('somethingWithoutSpaces', irc, msg, args, state)
+
+addConverter('validateEngine', validateEngine)
+
 class GoogleCSE(callbacks.Plugin):
     """The GoogleCSE plugin enables searching via their CSEv1 API"""
-    pass
 
+    def __init__(self, irc):
+        self.__parent = super(GoogleCSE, self)
+        self.__parent.__init__(irc)
+
+    def _error(self, error):
+        self.irc.error(error, Raise=True)
+
+    def getEngine(self, channel):
+        if channel.startswith('#'):
+            return self.registryValue('defaultEngine', channel)
+        return self.registryValue('defaultEngine')
+
+    def getAPIKey(self, channel):
+        if channel.startswith('#'):
+            apikey = self.registryValue('apikey', channel)
+        else:
+            apikey = self.registryValue('apikey')
+        if not apikey:
+            self.irc.error('Please add an API key to either the default or'
+                ' channel configuration.', Raise=True)
+        return apikey
+
+    def getDefaultOpts(self, channel):
+        opts = {}
+        opts['number'] = self.registryValue('number', channel)
+        opts['snippet'] = self.registryValue('includeSnippet', channel)
+        opts['safe'] = self.registryValue('safeLevel', channel)
+        return opts
+
+    def format(self, page, opts):
+        l = []
+        ctr = 0
+        try:
+            while True and ctr < opts['number']:
+                ctr += 1
+                item = page.items.next()
+                title = item.title.encode('utf-8')
+                link = item.link.encode('utf-8')
+                value = '{0}: <{1}>'.format(ircutils.bold(title), link)
+                if opts['snippet']:
+                    value += u' {0}'.format(item.snippet.encode('utf-8'))
+                l.append(value)
+        except:
+            return l
+        return l
+
+    @wrap([getopts({'engine': 'somethingWithoutSpaces', 'number': 'Int'}), 'text'])
+    def search(self, irc, msg, args, opts, query):
+        """<query>
+        Standard basic search. Uses the channel configured engine by default.
+        See plugins.googlecse.defaultEngine
+        """
+        self.irc = irc
+        _opts = self.getDefaultOpts(msg.args[0])
+        for option, arg in opts:
+            _opts[option] = arg
+        engine = self.getEngine(msg.args[0]) or _opts.get('engine')
+        apikey = self.getAPIKey(msg.args[0])
+
+        if not engine:
+            self._error('A search engine is required use --engine or'
+                    ' configure a default engine for the channel')
+
+        cse = GoogleAPI.CSE(apikey, engine, query, _opts)
+        page = cse.next()
+        fList = self.format(page, _opts)
+        joiner = ' | '
+        ctr = 0
+        if len(fList) > 1:
+            ctr += 1
+            output = joiner.join('#{0} {1}'.format(str(ctr), i) for i in fList)
+        else:
+            output = fList[0]
+        self.irc.reply(output)
+
+    @wrap
+    def test(self, irc, msg, args, query):
+        """Test"""
+        pass
 
 Class = GoogleCSE
-
 
 # vim:set shiftwidth=4 softtabstop=4 expandtab textwidth=79:

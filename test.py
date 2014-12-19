@@ -32,6 +32,15 @@ from supybot.test import *
 
 class GoogleCSETestCase(PluginTestCase):
     plugins = ('GoogleCSE',)
+    def testNoSearchEngine(self):
+        engine = ''
+        apikey = ''
+        self.assertNotError('config plugins.googlecse.apikey'
+            ' {0}'.format(apikey))
+        error = 'Error: A search engine is not configured for channel #test'
+        self.assertError('googlecse search foobar')
+        self.assertResponse('googlecse search --engine {0} symphony'
+                ' x'.format(engine),'')
 
 
 # vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:
