@@ -65,13 +65,10 @@ class GoogleCSE(callbacks.Plugin):
         return self.registryValue('defaultEngine')
 
     def getAPIKey(self, channel):
-        if channel.startswith('#'):
-            apikey = self.registryValue('apikey', channel)
-        else:
-            apikey = self.registryValue('apikey')
+        apikey = self.registryValue('apikey')
         if not apikey:
-            self.irc.error('Please add an API key to either the default or'
-                ' channel configuration.', Raise=True)
+            self.irc.error('Please add an API key to either the default or',
+                Raise=True)
         return apikey
 
     def getDefaultOpts(self, channel):
