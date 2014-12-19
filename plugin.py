@@ -124,11 +124,6 @@ class GoogleCSE(callbacks.Plugin):
             output = fList[0]
         self.irc.reply(output)
 
-    @wrap
-    def test(self, irc, msg, args, query):
-        """Test"""
-        pass
-
 Class = GoogleCSE
 
 # vim:set shiftwidth=4 softtabstop=4 expandtab textwidth=79:
