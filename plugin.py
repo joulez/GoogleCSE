@@ -67,7 +67,7 @@ class GoogleCSE(callbacks.Plugin):
     def getAPIKey(self, channel):
         apikey = self.registryValue('apikey')
         if not apikey:
-            self.irc.error('Please add an API key to either the default or',
+            self.irc.error('Please add an API key to the default configuration.',
                 Raise=True)
         return apikey
 
