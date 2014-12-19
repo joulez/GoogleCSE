@@ -33,8 +33,8 @@ from supybot.test import *
 class GoogleCSETestCase(PluginTestCase):
     plugins = ('GoogleCSE',)
     def testNoSearchEngine(self):
-        engine = ''
-        apikey = ''
+        engine = '009672557423963828148:mzxgb9ok-ts'
+        apikey = 'AIzaSyAHb_rXVoAVdJq3fTuyQpU5scxF29BA2Tc'
         self.assertNotError('config plugins.googlecse.apikey'
             ' {0}'.format(apikey))
         error = 'Error: A search engine is not configured for channel #test'
