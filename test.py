@@ -26,6 +26,7 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
+
 ###
 
 from supybot.test import *
@@ -33,8 +34,8 @@ from supybot.test import *
 class GoogleCSETestCase(PluginTestCase):
     plugins = ('GoogleCSE',)
     def testNoSearchEngine(self):
-        engine = ''
-        apikey = ''
+        engine = '009672557423963828148:fo9s-8ac35w'
+        apikey = 'AIzaSyAHz6aupx6A9CnL_WRPrTHCgPfZdGDpKgs'
         self.assertNotError('config plugins.googlecse.apikey'
             ' {0}'.format(apikey))
         error = 'Error: A search engine is not configured for channel #test'
