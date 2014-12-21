@@ -54,7 +54,7 @@ GoogleCSE = conf.registerPlugin('GoogleCSE')
 # This is where your configuration variables (if any) should go.  For example:
 # conf.registerGlobalValue(GoogleCSE, 'someConfigVariableName',
 #     registry.Boolean(False, _("""Help for someConfigVariableName.""")))
-conf.registerChannelValue(GoogleCSE, 'apikey',
+conf.registerGlobalValue(GoogleCSE, 'apikey',
     registry.String('', _("""API key provided by google for API access""")))
 conf.registerGlobalValue(GoogleCSE, 'engines',
     registry.CommaSeparatedListOfStrings('', _("""List of available Custom
