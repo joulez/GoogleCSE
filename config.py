@@ -60,6 +60,8 @@ conf.registerChannelValue(GoogleCSE, 'defaultEngine',
     registry.String('', _("""Default Custom Search Engine for channel.""")))
 conf.registerChannelValue(GoogleCSE, 'maxPageResults',
     registry.Integer(10, _("""Maximum number of page results to fetch.""")))
+conf.registerChannelValue(GoogleCSE, 'maxPages',
+    registry.Integer(1, _("""Maximum number of page results to fetch.""")))
 conf.registerChannelValue(GoogleCSE, 'maxDisplayResults',
     registry.Integer(5, _("""Maximum number of page results to display.""")))
 conf.registerChannelValue(GoogleCSE, 'includeSnippet',
