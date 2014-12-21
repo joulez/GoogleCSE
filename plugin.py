@@ -62,6 +62,7 @@ class GoogleCSE(callbacks.Plugin):
         self.__parent.__init__(irc)
         self._test_response = None
         self.opts = {}
+        self.cse = None
 
     def _error(self, error):
         self.irc.error(error, Raise=True)
