@@ -59,16 +59,15 @@ class GoogleCSETestCase(PluginTestCase):
             ' docs'))
         self.assertNotError('googlecse next')
         self.assertNotError('googlecse previous')
+        plugin.cse.maxPages = 2
         with open(os.path.join(dir, 'local', 'sampleResultsP2.json'), 'r') as\
             f:
             response = DResponse()
             response.status_code = 200
             response._json = json.loads(f.read())
         plugin._test_feed(response)
-
-        self.assertError('googlecse nextpage')
         self.assertNotError('config plugins.googlecse.maxpages 2')
-        self.assertNotError('googlecse nextpage')
+        self.assertNotError('googlecse about')
 
 
 # vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:

@@ -194,8 +194,10 @@ class GoogleCSE(callbacks.Plugin):
         """<about>
         Return information about the plugin.
         """
-        irc.reply(format('GoogleCSE - Google Custom Search Engine plugin'
-            ' for the Limnoria IRC bot %u', ircutils.bold(self.home)))
+        irc.reply(format('%s - Google Custom Search Engine plugin'
+            ' for the Limnoria IRC bot %u', 
+            ircutils.bold(self.__class__.__name__),
+            ircutils.bold(self.home)))
 
     def _test_feed(self, response):
         """Testing purposes, feed a DResponse object from ./local/test.py"""
