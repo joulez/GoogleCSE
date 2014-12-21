@@ -54,6 +54,7 @@ def isChannel(s):
 
 class GoogleCSE(callbacks.Plugin):
     """The GoogleCSE plugin enables searching via their CSEv1 API"""
+    home = 'https://github.com/joulez/GoogleCSE'
     searchOpts = ('number', 'snippet', 'safe')
 
     def __init__(self, irc):
@@ -188,6 +189,14 @@ class GoogleCSE(callbacks.Plugin):
         Search the cache for matches and load the results.
         """
         self.irc = irc
+
+    @wrap
+    def about(self, irc, *args):
+        """<about>
+        Return information about the plugin.
+        """
+        irc.reply(format('GoogleCSE - Google Custom Search Engine plugin'
+            ' for the Limnoria IRC bot %u', ircutils.bold(self.home)))
 
     def _test_feed(self, response):
         """Testing purposes, feed a DResponse object from ./local/test.py"""
