@@ -61,7 +61,7 @@ class GoogleCSE(callbacks.Plugin):
         self.__parent = super(GoogleCSE, self)
         self.__parent.__init__(irc)
         self._test_response = None
-        self.opts = None
+        self.opts = {}
 
     def _error(self, error):
         self.irc.error(error, Raise=True)
@@ -79,7 +79,6 @@ class GoogleCSE(callbacks.Plugin):
         return apikey
 
     def setOpts(self, channel, opts):
-        self.opts  = {}
         self.opts['number'] = self.registryValue('maxPageResults', channel)
         self.opts['maxDisplayResults'] = self.registryValue('maxDisplayResults',
                 channel)
