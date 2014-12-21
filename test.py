@@ -55,9 +55,10 @@ class GoogleCSETestCase(PluginTestCase):
             ' {0}'.format(apikey))
         error = 'Error: A search engine is not configured for channel #test'
         self.assertError('googlecse search python docs')
-        self.assertNotError(consist('googlecse search --engine {0} python'
-            ' docs').format(consist(engine)))
-#        self.assertNotError('googlecse next')
+        self.assertResponse(consist('googlecse search --engine {0} python'
+            ' docs').format(consist(engine)),'')
+        self.assertResponse('googlecse next','')
+        self.assertResponse('googlecse previous', '')
 
 
 # vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:
