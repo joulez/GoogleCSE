@@ -32,6 +32,9 @@ class ItemIndexTree(list):
         item.parent = self
         list.__add__(self, item)
 
+    def __len__(self):
+        return list.__len__(self)
+
     def __setitem__(self, item):
         self._check_ins(item)
         item.parent = self
