@@ -182,6 +182,13 @@ class GoogleCSE(callbacks.Plugin):
         else:
             self.irc.reply(L[0])
 
+    @wrap(['text'])
+    def cache(self, irc, msg, args, query):
+        """<query>
+        Search the cache for matches and load the results.
+        """
+        self.irc = irc
+
     def _test_feed(self, response):
         """Testing purposes, feed a DResponse object from ./local/test.py"""
         self._test_response = response
