@@ -55,10 +55,20 @@ class GoogleCSETestCase(PluginTestCase):
             ' {0}'.format(apikey))
         error = 'Error: A search engine is not configured for channel #test'
         self.assertError('googlecse search python docs')
-        self.assertResponse(consist('googlecse search --engine {0} python'
-            ' docs').format(consist(engine)),'')
-        self.assertResponse('googlecse next','')
-        self.assertResponse('googlecse previous', '')
+        self.assertNotError(consist('googlecse search --engine {0} python'
+            ' docs'))
+        self.assertNotError('googlecse next')
+        self.assertNotError('googlecse previous')
+        with open(os.path.join(dir, 'local', 'sampleResultsP2.json'), 'r') as\
+            f:
+            response = DResponse()
+            response.status_code = 200
+            response._json = json.loads(f.read())
+        plugin._test_feed(response)
+
+        self.assertError('googlecse nextpage')
+        self.assertNotError('config plugins.googlecse.maxpages 2')
+        self.assertNotError('googlecse nextpage')
 
 
 # vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:

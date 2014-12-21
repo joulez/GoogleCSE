@@ -78,16 +78,15 @@ class GoogleCSE(callbacks.Plugin):
         return apikey
 
     def setOpts(self, channel, opts):
-        d = {}
-        d['number'] = self.registryValue('maxPageResults', channel)
-        d['maxDisplayResults'] = self.registryValue('maxDisplayResults',
+        self.opts  = {}
+        self.opts['number'] = self.registryValue('maxPageResults', channel)
+        self.opts['maxDisplayResults'] = self.registryValue('maxDisplayResults',
                 channel)
-        d['snippet'] = self.registryValue('includeSnippet', channel)
-        d['safe'] = self.registryValue('safeLevel', channel)
-        d['maxPages'] = self.registryValue('maxPages', channel)
+        self.opts['snippet'] = self.registryValue('includeSnippet', channel)
+        self.opts['safe'] = self.registryValue('safeLevel', channel)
+        self.opts['maxPages'] = self.registryValue('maxPages', channel)
         for option, arg in opts:
-            d[option] = arg
-        self.opts = d
+            self.opts[option] = arg
 
     def formatOutput(self, channel, page, nav):
         l = []
@@ -156,6 +155,24 @@ class GoogleCSE(callbacks.Plugin):
         page = self.cse.currentPage
         fList = self.formatOutput(msg.args[0], page, 'previous')
         return self.printResults(irc, fList)
+
+    @wrap
+    def nextpage(self, irc, msg, args):
+        """Cue the next page."""
+        try:
+            page = self.cse.next()
+        except:
+            return irc.error('No next pages.')
+        return irc.reply(format('Current page startIndex: %d',page.startIndex))
+
+    @wrap
+    def previouspage(self, irc, msg, args):
+        """Cue the previous page."""
+        try:
+            page = self.cse.next()
+        except:
+            return irc.error('No previous pages.')
+        return irc.reply(format('Current page startIndex: %d',page.startIndex))
 
     def printResults(self, irc, L):
         if not L:
