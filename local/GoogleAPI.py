@@ -80,6 +80,10 @@ class Pages(ItemIndexTree):
         else:
             return '\"{0}\" startIndex: {1}'.format(self.title,
                 str(self.startIndex))
+
+    @property
+    def currentItem(self):
+        return self.items.current
     
     def next(self):
         super(Pages, self).next()

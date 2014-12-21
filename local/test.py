@@ -101,4 +101,11 @@ class TestCSE(unittest.TestCase):
         self.assertRegexpMatches(consist(item.title),
             consist('Python\sRuntime\sEnvironment.*Google\sCloud\sPlatform'))
 
+        #previous page
+        page = self.cse.previous()
+        item = page.currentItem
+        self.assertRegexpMatches(consist(item.title),
+            consist('Overview.*Python.*documentation'))
+        
+
 # vim:set ts=4 sw=4 et tw=79:
