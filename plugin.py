@@ -145,22 +145,27 @@ class GoogleCSE(callbacks.Plugin):
     @wrap
     def next(self, irc, msg, args):
         """Return next list of items."""
-        page = self.cse.currentPage
-        fList = self.formatOutput(msg.args[0], page, 'next')
-        return self.printResults(irc, fList)
+        if self.cse:
+            page = self.cse.currentPage
+            fList = self.formatOutput(msg.args[0], page, 'next')
+            return self.printResults(irc, fList)
 
     @wrap
     def previous(self, irc, msg, args):
         """Return previous list of items."""
-        page = self.cse.currentPage
-        fList = self.formatOutput(msg.args[0], page, 'previous')
-        return self.printResults(irc, fList)
+        if self.cse:
+            page = self.cse.currentPage
+            fList = self.formatOutput(msg.args[0], page, 'previous')
+            return self.printResults(irc, fList)
 
     @wrap
     def nextpage(self, irc, msg, args):
         """Cue the next page."""
         try:
-            page = self.cse.next()
+            if self.cse:
+                page = self.cse.next()
+            else:
+                return
         except:
             return irc.error('No next pages.')
         return irc.reply(format('Current page startIndex: %i',page.startIndex))
@@ -169,7 +174,10 @@ class GoogleCSE(callbacks.Plugin):
     def previouspage(self, irc, msg, args):
         """Cue the previous page."""
         try:
-            page = self.cse.previous()
+            if self.cse:
+                page = self.cse.previous()
+            else:
+                return
         except:
             return irc.error('No previous pages.')
         return irc.reply(format('Current page startIndex: %i',page.startIndex))
