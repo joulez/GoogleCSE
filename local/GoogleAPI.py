@@ -14,7 +14,7 @@
 
 import json
 
-from .exceptions import evalErrors
+from .exceptions import *
 from .utils import ItemIndexTree
 
 try:
@@ -80,6 +80,10 @@ class Pages(ItemIndexTree):
         else:
             return '\"{0}\" startIndex: {1}'.format(self.title,
                 str(self.startIndex))
+
+    @property
+    def currentItem(self):
+        return self.items.current
     
     def next(self):
         super(Pages, self).next()
@@ -88,6 +92,12 @@ class Pages(ItemIndexTree):
     def previous(self):
         super(Pages, self).previous()
         return self.current
+
+    def nextItem(self):
+        return self.items.next()
+
+    def previousItem(self):
+        return self.items.previous()
 
     @property
     def startIndex(self):
@@ -113,7 +123,7 @@ class API(dict):
         self.setAPIkey(apiKey)
     def setAPIkey(self, apiKey):
         if apiKey is None:
-            raise InvalidAPI('API key is cannot be None.')
+            raise APIError('API key is cannot be None.')
         self['key'] = apiKey
     def valdiate(self):
         pass
@@ -121,18 +131,23 @@ class API(dict):
 class CSE(API):
     """Custom Search Engine."""
     url = 'https://www.googleapis.com/customsearch/v1'
-    def __init__(self, api_key, engineID, query, opts):
+    _test_feed = False
+    def __init__(self, query, opts, api_key=None, engine_id=None):
         super(CSE, self).__init__(api_key)
-        self.setEngine(engineID)
+        self.setEngine(engine_id)
         self['q'] = query
         self.pages = Pages()
         self.response = None
-        self._test_feed = None
+        self.maxPages = opts.setdefault('maxPages', 1)
 
-    def setEngine(self, engineID):
-        if engineID is None:
-            raise InvalidCSEngine('Engine ID cannot be None.')
-        self['cx'] = engineID
+    def setEngine(self, engine_id):
+        if engine_id is None:
+            raise CSEAPIError('Engine ID cannot be None.')
+        self['cx'] = engine_id
+
+    @property
+    def currentPage(self):
+        return self.pages.current
 
     @property
     def start(self):
@@ -141,14 +156,16 @@ class CSE(API):
     def next(self):
         if not self.pages:
             self._execute()
+            self.pages.next()
         else:
             try:
+                if self.maxPages > len(self.pages) and self.maxPages != 0:
+                    self['start'] = self.pages.current.startIndex + \
+                        self.pages.current.count
+                    self._execute()
+            finally:
                 self.pages.next()
-            except:
-                self['start'] = self.pages.current.startIndex + self.pages.current.count
-                self._execute()
-                self.pages.next()
-            
+
         return self.pages.current
 
     def previous(self):
@@ -158,14 +175,11 @@ class CSE(API):
 
     def _execute(self):
         if self._test_feed:
-            self.pages.append(Pages(json.loads(self._test_feed)))
-            self._test_feed = None
-            return
-        response = requests.get(self.url, params=self)
-        if response.status_code == 200:
-            self.response = response
-            self.pages.append(Pages(self.response.json()))
-            with open('sample.json', 'w') as f:
-                f.write(self.response.content)
+            self._test_feed = False
         else:
-            return evalErrors('CSE', response)
+            response = requests.get(self.url, params=self)
+            self.response = response
+        if self.response.status_code == 200:
+            self.pages.append(Pages(self.response.json()))
+        else:
+            raise GoogleAPIError('CSE', self.response.json())

@@ -46,24 +46,31 @@ def configure(advanced):
     from supybot.questions import expect, anything, something, yn
     conf.registerPlugin('GoogleCSE', True)
 
+class SafeLevels(registry.OnlySomeStrings):
+    validStrings = ('high', 'medium', 'off')
+
 
 GoogleCSE = conf.registerPlugin('GoogleCSE')
 # This is where your configuration variables (if any) should go.  For example:
 # conf.registerGlobalValue(GoogleCSE, 'someConfigVariableName',
 #     registry.Boolean(False, _("""Help for someConfigVariableName.""")))
-conf.registerChannelValue(GoogleCSE, 'apikey',
+conf.registerGlobalValue(GoogleCSE, 'apikey',
     registry.String('', _("""API key provided by google for API access""")))
 conf.registerGlobalValue(GoogleCSE, 'engines',
     registry.CommaSeparatedListOfStrings('', _("""List of available Custom
         Search Engines.""")))
 conf.registerChannelValue(GoogleCSE, 'defaultEngine',
     registry.String('', _("""Default Custom Search Engine for channel.""")))
-conf.registerChannelValue(GoogleCSE, 'number',
-    registry.Integer(10, _("""Maximum number of results to fetch.""")))
+conf.registerChannelValue(GoogleCSE, 'maxPageResults',
+    registry.Integer(10, _("""Maximum number of page results to fetch.""")))
+conf.registerChannelValue(GoogleCSE, 'maxPages',
+    registry.Integer(1, _("""Maximum number of page results to fetch.""")))
+conf.registerChannelValue(GoogleCSE, 'maxDisplayResults',
+    registry.Integer(5, _("""Maximum number of page results to display.""")))
 conf.registerChannelValue(GoogleCSE, 'includeSnippet',
     registry.Boolean(False, _("""Display search result snippet in the output.""")))
 conf.registerChannelValue(GoogleCSE, 'safeLevel',
-    registry.String('medium', _("""Search results safe level. Default:
+    SafeLevels('medium', _("""Search results safe level. Default:
         medium.""")))
 
 # vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:

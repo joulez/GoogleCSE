@@ -1,0 +1,269 @@
+{
+ "kind": "customsearch#search",
+ "url": {
+  "type": "application/json",
+  "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+ },
+ "queries": {
+  "nextPage": [
+   {
+    "title": "Google Custom Search - python docs",
+    "totalResults": "1220000",
+    "searchTerms": "python docs",
+    "count": 10,
+    "startIndex": 21,
+    "inputEncoding": "utf8",
+    "outputEncoding": "utf8",
+    "safe": "off",
+    "cx": "009672557423963828148:fo9s-8ac35w"
+   }
+  ],
+  "request": [
+   {
+    "title": "Google Custom Search - python docs",
+    "totalResults": "1220000",
+    "searchTerms": "python docs",
+    "count": 10,
+    "startIndex": 11,
+    "inputEncoding": "utf8",
+    "outputEncoding": "utf8",
+    "safe": "off",
+    "cx": "009672557423963828148:fo9s-8ac35w"
+   }
+  ],
+  "previousPage": [
+   {
+    "title": "Google Custom Search - python docs",
+    "totalResults": "1220000",
+    "searchTerms": "python docs",
+    "count": 10,
+    "startIndex": 1,
+    "inputEncoding": "utf8",
+    "outputEncoding": "utf8",
+    "safe": "off",
+    "cx": "009672557423963828148:fo9s-8ac35w"
+   }
+  ]
+ },
+ "context": {
+  "title": "default"
+ },
+ "searchInformation": {
+  "searchTime": 0.271336,
+  "formattedSearchTime": "0.27",
+  "totalResults": "1220000",
+  "formattedTotalResults": "1,220,000"
+ },
+ "items": [
+  {
+   "kind": "customsearch#result",
+   "title": "Python Runtime Environment - Python — Google Cloud Platform",
+   "htmlTitle": "\u003cb\u003ePython\u003c/b\u003e Runtime Environment - \u003cb\u003ePython\u003c/b\u003e — Google Cloud Platform",
+   "link": "https://cloud.google.com/appengine/docs/python/",
+   "displayLink": "cloud.google.com",
+   "snippet": "Your Python application runs on Google's scalable infrastructure, and uses large-\nscale persistent storage and services. ... App Engine executes your Python \napplication code using a pre-loaded Python interpreter in a safe .... \nDocumentation ...",
+   "htmlSnippet": "Your \u003cb\u003ePython\u003c/b\u003e application runs on Google&#39;s scalable infrastructure, and uses large-\u003cbr\u003e\nscale persistent storage and services. ... App Engine executes your \u003cb\u003ePython\u003c/b\u003e \u003cbr\u003e\napplication code using a pre-loaded \u003cb\u003ePython\u003c/b\u003e interpreter in a safe .... \u003cbr\u003e\n\u003cb\u003eDocumentation\u003c/b\u003e&nbsp;...",
+   "cacheId": "IK3gogsyYLYJ",
+   "formattedUrl": "https://cloud.google.com/appengine/docs/python/",
+   "htmlFormattedUrl": "https://cloud.google.com/appengine/\u003cb\u003edocs\u003c/b\u003e/\u003cb\u003epython\u003c/b\u003e/",
+   "pagemap": {
+    "cse_image": [
+     {
+      "src": "https://i.ytimg.com/vi/VPHHlnyoGfk/sddefault.jpg"
+     }
+    ],
+    "cse_thumbnail": [
+     {
+      "width": "259",
+      "height": "194",
+      "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQQtFIuSavoQIwM8V8oDxWcezZdoRArYvANWn3TkPjFMi2k9lLXRJc9Hiq-"
+     }
+    ],
+    "article": [
+     {
+      "name": "Python Runtime Environment",
+      "articlebody": "Python |Java |PHP |Go Welcome to Google App Engine for Python! With App Engine, you can build web applications using the Python programming language, and take advantage of the many libraries,...",
+      "datepublished": "2014-12-11T18:21:02.811000"
+     }
+    ],
+    "metatags": [
+     {
+      "xsrf_token": "SCms4zh8_-7gGd7MNKeQlToxNDE5MTA1NTc0NzAzMjUw",
+      "viewport": "initial-scale=1, minimum-scale=1,   width=device-width",
+      "og:site_name": "Google Developers",
+      "og:type": "website",
+      "og:url": "https://cloud.google.com/appengine/docs/python/",
+      "og:locale": "en",
+      "og:title": "Python Runtime Environment",
+      "og:description": "Offers users the ability to build and host web applications on Google's infrastructure."
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Overview — Sphinx 1.2.3 documentation",
+   "htmlTitle": "Overview — Sphinx 1.2.3 \u003cb\u003edocumentation\u003c/b\u003e",
+   "link": "http://sphinx-doc.org/",
+   "displayLink": "sphinx-doc.org",
+   "snippet": "It was originally created for the new Python documentation, and it has excellent \nfacilities for the documentation of Python projects, but C/C++ is already ...",
+   "htmlSnippet": "It was originally created for the new \u003cb\u003ePython documentation\u003c/b\u003e, and it has excellent \u003cbr\u003e\nfacilities for the documentation of Python projects, but C/C++ is already&nbsp;...",
+   "cacheId": "FJeDRTVkh1YJ",
+   "formattedUrl": "sphinx-doc.org/",
+   "htmlFormattedUrl": "sphinx-doc.org/"
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Python Client Library - Braintree",
+   "htmlTitle": "\u003cb\u003ePython\u003c/b\u003e Client Library - Braintree",
+   "link": "https://www.braintreepayments.com/docs/python",
+   "displayLink": "www.braintreepayments.com",
+   "snippet": "These developer docs are now deprecated and will not contain updated \ninformation ... tar zxf requests-2.2.1.tar.gz cd requests-2.2.1 python setup.py \ninstall wget ...",
+   "htmlSnippet": "These developer \u003cb\u003edocs\u003c/b\u003e are now deprecated and will not contain updated \u003cbr\u003e\ninformation ... tar zxf requests-2.2.1.tar.gz cd requests-2.2.1 \u003cb\u003epython\u003c/b\u003e setup.py \u003cbr\u003e\ninstall wget&nbsp;...",
+   "cacheId": "-D3OW0sxW3UJ",
+   "formattedUrl": "https://www.braintreepayments.com/docs/python",
+   "htmlFormattedUrl": "https://www.braintreepayments.com/\u003cb\u003edocs\u003c/b\u003e/\u003cb\u003epython\u003c/b\u003e",
+   "pagemap": {
+    "metatags": [
+     {
+      "msvalidate.01": "BB72AE67A2508DF5A032AF96318E4319",
+      "viewport": "width=device-width, initial-scale=1.0, user-scalable=no"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "7. WebDriver API — Selenium Python Bindings 2 documentation",
+   "htmlTitle": "7. WebDriver API — Selenium \u003cb\u003ePython\u003c/b\u003e Bindings 2 \u003cb\u003edocumentation\u003c/b\u003e",
+   "link": "http://selenium-python.readthedocs.org/en/latest/api.html",
+   "displayLink": "selenium-python.readthedocs.org",
+   "snippet": "This is not an official documentation. Official API documentation is available here. \nThis chapter cover all the interfaces of Selenium WebDriver. Recommended ...",
+   "htmlSnippet": "This is not an official \u003cb\u003edocumentation\u003c/b\u003e. Official API \u003cb\u003edocumentation\u003c/b\u003e is available here. \u003cbr\u003e\nThis chapter cover all the interfaces of Selenium WebDriver. Recommended&nbsp;...",
+   "cacheId": "b6NXCC4S2B4J",
+   "formattedUrl": "selenium-python.readthedocs.org/en/latest/api.html",
+   "htmlFormattedUrl": "selenium-\u003cb\u003epython\u003c/b\u003e.readthe\u003cb\u003edocs\u003c/b\u003e.org/en/latest/api.html",
+   "pagemap": {
+    "metatags": [
+     {
+      "viewport": "width=device-width, initial-scale=1.0"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "OpenCV-Python Tutorials — OpenCV 3.0.0-dev documentation",
+   "htmlTitle": "OpenCV-\u003cb\u003ePython\u003c/b\u003e Tutorials — OpenCV 3.0.0-dev \u003cb\u003edocumentation\u003c/b\u003e",
+   "link": "http://docs.opencv.org/trunk/doc/py_tutorials/py_tutorials.html",
+   "displayLink": "docs.opencv.org",
+   "snippet": "In this section you will learn basic operations on image like pixel editing, \ngeometric transformations, code optimization, some mathematical tools etc.",
+   "htmlSnippet": "In this section you will learn basic operations on image like pixel editing, \u003cbr\u003e\ngeometric transformations, code optimization, some mathematical tools etc.",
+   "cacheId": "uxgkjbn5_CoJ",
+   "formattedUrl": "docs.opencv.org/trunk/doc/py_tutorials/py_tutorials.html",
+   "htmlFormattedUrl": "\u003cb\u003edocs\u003c/b\u003e.opencv.org/trunk/doc/py_tutorials/py_tutorials.html",
+   "pagemap": {
+    "cse_image": [
+     {
+      "src": "http://docs.opencv.org/trunk/_images/gui.jpg"
+     }
+    ],
+    "cse_thumbnail": [
+     {
+      "width": "78",
+      "height": "78",
+      "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTI3O8x4AVDbRoBqn2iWhNOHoq9r2WzLn_Yp5dd00e4eUWW8fMZnJIy8Q"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Python Elasticsearch Client — Elasticsearch 1.2.0 documentation",
+   "htmlTitle": "\u003cb\u003ePython\u003c/b\u003e Elasticsearch Client — Elasticsearch 1.2.0 \u003cb\u003edocumentation\u003c/b\u003e",
+   "link": "https://elasticsearch-py.readthedocs.org/",
+   "displayLink": "elasticsearch-py.readthedocs.org",
+   "snippet": "Docs »; Python Elasticsearch Client; Edit on GitHub ... Its goal is to provide \ncommon ground for all Elasticsearch-related code in Python; because of this it \ntries to ...",
+   "htmlSnippet": "\u003cb\u003eDocs\u003c/b\u003e »; \u003cb\u003ePython\u003c/b\u003e Elasticsearch Client; Edit on GitHub ... Its goal is to provide \u003cbr\u003e\ncommon ground for all Elasticsearch-related code in \u003cb\u003ePython\u003c/b\u003e; because of this it \u003cbr\u003e\ntries to&nbsp;...",
+   "cacheId": "rR5Z_yqKPaIJ",
+   "formattedUrl": "https://elasticsearch-py.readthedocs.org/",
+   "htmlFormattedUrl": "https://elasticsearch-py.readthe\u003cb\u003edocs\u003c/b\u003e.org/",
+   "pagemap": {
+    "metatags": [
+     {
+      "viewport": "width=device-width, initial-scale=1.0"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Welcome to Python Social Auth's documentation! — Python Social ...",
+   "htmlTitle": "Welcome to \u003cb\u003ePython\u003c/b\u003e Social Auth&#39;s \u003cb\u003edocumentation\u003c/b\u003e! — \u003cb\u003ePython\u003c/b\u003e Social \u003cb\u003e...\u003c/b\u003e",
+   "link": "http://psa.matiasaguirre.net/docs/",
+   "displayLink": "psa.matiasaguirre.net",
+   "snippet": "Welcome to Python Social Auth's documentation!¶. Python Social Auth aims to be \nan easy to setup social authentication and authorization mechanism for Python ...",
+   "htmlSnippet": "Welcome to \u003cb\u003ePython\u003c/b\u003e Social Auth&#39;s \u003cb\u003edocumentation\u003c/b\u003e!¶. \u003cb\u003ePython\u003c/b\u003e Social Auth aims to be \u003cbr\u003e\nan easy to setup social authentication and authorization mechanism for \u003cb\u003ePython\u003c/b\u003e&nbsp;...",
+   "cacheId": "-25rP-LbSlcJ",
+   "formattedUrl": "psa.matiasaguirre.net/docs/",
+   "htmlFormattedUrl": "psa.matiasaguirre.net/\u003cb\u003edocs\u003c/b\u003e/"
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Documentation — The Hitchhiker's Guide to Python",
+   "htmlTitle": "\u003cb\u003eDocumentation\u003c/b\u003e — The Hitchhiker&#39;s Guide to \u003cb\u003ePython\u003c/b\u003e",
+   "link": "http://docs.python-guide.org/en/latest/writing/documentation/",
+   "displayLink": "docs.python-guide.org",
+   "snippet": "Readability is a primary focus for Python developers, in both project and code \ndocumentation. Following some simple best practices can save both you and ...",
+   "htmlSnippet": "Readability is a primary focus for \u003cb\u003ePython\u003c/b\u003e developers, in both project and code \u003cbr\u003e\n\u003cb\u003edocumentation\u003c/b\u003e. Following some simple best practices can save both you and&nbsp;...",
+   "cacheId": "k7PX9-3UupUJ",
+   "formattedUrl": "docs.python-guide.org/en/latest/writing/documentation/",
+   "htmlFormattedUrl": "\u003cb\u003edocs\u003c/b\u003e.\u003cb\u003epython\u003c/b\u003e-guide.org/en/latest/writing/\u003cb\u003edocumentation\u003c/b\u003e/",
+   "pagemap": {
+    "metatags": [
+     {
+      "viewport": "width=device-width, initial-scale=0.9, maximum-scale=0.9"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Documentation",
+   "htmlTitle": "\u003cb\u003eDocumentation\u003c/b\u003e",
+   "link": "http://initd.org/psycopg/docs/",
+   "displayLink": "initd.org",
+   "snippet": "Its main features are the complete implementation of the Python DB API 2.0 \nspecification and the thread safety (several threads can share the same \nconnection).",
+   "htmlSnippet": "Its main features are the complete implementation of the \u003cb\u003ePython\u003c/b\u003e DB API 2.0 \u003cbr\u003e\nspecification and the thread safety (several threads can share the same \u003cbr\u003e\nconnection).",
+   "cacheId": "p2yWTVE_1tsJ",
+   "formattedUrl": "initd.org/psycopg/docs/",
+   "htmlFormattedUrl": "initd.org/psycopg/\u003cb\u003edocs\u003c/b\u003e/"
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Blender Documentation Contents — Blender 2.72.1 - API ...",
+   "htmlTitle": "Blender \u003cb\u003eDocumentation\u003c/b\u003e Contents — Blender 2.72.1 - API \u003cb\u003e...\u003c/b\u003e",
+   "link": "http://www.blender.org/api/250PythonDoc/",
+   "displayLink": "www.blender.org",
+   "snippet": "Blender/Python Documentation¶. Blender/Python Quickstart: new to blender/\nscripting and want to get your feet wet? Blender/Python API Overview: a more ...",
+   "htmlSnippet": "Blender/\u003cb\u003ePython Documentation\u003c/b\u003e¶. Blender/Python Quickstart: new to blender/\u003cbr\u003e\nscripting and want to get your feet wet? Blender/Python API Overview: a more&nbsp;...",
+   "cacheId": "1ihQKaaWc64J",
+   "formattedUrl": "www.blender.org/api/250PythonDoc/",
+   "htmlFormattedUrl": "www.blender.org/api/250\u003cb\u003ePython\u003c/b\u003eDoc/",
+   "pagemap": {
+    "cse_image": [
+     {
+      "src": "http://www.blender.org/wp-content/uploads/2013/11/developers_python_api-300x90.png"
+     }
+    ],
+    "cse_thumbnail": [
+     {
+      "width": "240",
+      "height": "72",
+      "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQnX6fX1fchWk6pflXrPDISyiiR5dVyYAfbvb8l73w-hDzw8vrbmdBtMZk"
+     }
+    ]
+   }
+  }
+ ]
+}

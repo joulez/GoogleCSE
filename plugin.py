@@ -49,12 +49,18 @@ def validateEngine(irc, msg, args, state):
 
 addConverter('validateEngine', validateEngine)
 
+def isChannel(s):
+    return True if s.startswith('#') else False
+
 class GoogleCSE(callbacks.Plugin):
     """The GoogleCSE plugin enables searching via their CSEv1 API"""
+    searchOpts = ('number', 'snippet', 'safe')
 
     def __init__(self, irc):
         self.__parent = super(GoogleCSE, self)
         self.__parent.__init__(irc)
+        self._test_response = None
+        self.opts = None
 
     def _error(self, error):
         self.irc.error(error, Raise=True)
@@ -64,65 +70,102 @@ class GoogleCSE(callbacks.Plugin):
             return self.registryValue('defaultEngine', channel)
         return self.registryValue('defaultEngine')
 
-    def getAPIKey(self, channel):
+    def getAPIKey(self):
         apikey = self.registryValue('apikey')
         if not apikey:
             self.irc.error('Please add an API key to the default configuration.',
                 Raise=True)
         return apikey
 
-    def getDefaultOpts(self, channel):
-        opts = {}
-        opts['number'] = self.registryValue('number', channel)
-        opts['snippet'] = self.registryValue('includeSnippet', channel)
-        opts['safe'] = self.registryValue('safeLevel', channel)
-        return opts
+    def setOpts(self, channel, opts):
+        d = {}
+        d['number'] = self.registryValue('maxPageResults', channel)
+        d['maxDisplayResults'] = self.registryValue('maxDisplayResults',
+                channel)
+        d['snippet'] = self.registryValue('includeSnippet', channel)
+        d['safe'] = self.registryValue('safeLevel', channel)
+        d['maxPages'] = self.registryValue('maxPages', channel)
+        for option, arg in opts:
+            d[option] = arg
+        self.opts = d
 
-    def format(self, page, opts):
+    def formatOutput(self, channel, page, nav):
         l = []
         ctr = 0
+        max = self.registryValue('maxDisplayResults')
+        def setFormat(title, link):
+            v= format('%s: %u', ircutils.bold(item.title), item.link)
+            if self.opts['snippet']:
+                v += format(' %s',(item.snippet))
+            return v
+
+        if isChannel(channel):
+            max = self.registryValue('maxDisplayResults', channel)
         try:
-            while True and ctr < opts['number']:
+            while ctr < max:
                 ctr += 1
-                item = page.items.next()
-                title = item.title.encode('utf-8')
-                link = item.link.encode('utf-8')
-                value = '{0}: <{1}>'.format(ircutils.bold(title), link)
-                if opts['snippet']:
-                    value += u' {0}'.format(item.snippet.encode('utf-8'))
-                l.append(value)
+                if nav == 'next':
+                    item = page.nextItem()
+                    l.append(setFormat(item.title, item.link))
+                else:
+                    item = page.previousItem()
+                    l.insert(0, setFormat(item.title, item.link))
         except:
             return l
         return l
 
-    @wrap([getopts({'engine': 'somethingWithoutSpaces', 'number': 'Int'}), 'text'])
+    def _next(self):
+        if self._test_response:
+            self.cse.response = self._test_response
+            self.cse._test_feed = True
+        return self.cse.next()
+        
+
+    @wrap([getopts({'engine': 'somethingWithoutSpaces', 'number': 'Int',
+        'snippet': ''}), 'text'])
     def search(self, irc, msg, args, opts, query):
         """<query>
         Standard basic search. Uses the channel configured engine by default.
         See plugins.googlecse.defaultEngine
         """
         self.irc = irc
-        _opts = self.getDefaultOpts(msg.args[0])
-        for option, arg in opts:
-            _opts[option] = arg
-        engine = self.getEngine(msg.args[0]) or _opts.get('engine')
-        apikey = self.getAPIKey(msg.args[0])
+        self.setOpts(msg.args[0], opts)
+        engine = self.getEngine(msg.args[0]) or self.opts.get('engine')
+        apikey = self.getAPIKey()
 
         if not engine:
             self._error('A search engine is required use --engine or'
                     ' configure a default engine for the channel')
 
-        cse = GoogleAPI.CSE(apikey, engine, query, _opts)
-        page = cse.next()
-        fList = self.format(page, _opts)
-        joiner = ' | '
-        ctr = 0
-        if len(fList) > 1:
-            ctr += 1
-            output = joiner.join('#{0} {1}'.format(str(ctr), i) for i in fList)
+        self.cse = GoogleAPI.CSE(query, self.opts, api_key=apikey, 
+            engine_id=engine)
+        page = self._next()
+        fList = self.formatOutput(msg.args[0], page, 'next')
+        return self.printResults(irc, fList)
+
+    @wrap
+    def next(self, irc, msg, args):
+        """Return next list of items."""
+        page = self.cse.currentPage
+        fList = self.formatOutput(msg.args[0], page, 'next')
+        return self.printResults(irc, fList)
+
+    @wrap
+    def previous(self, irc, msg, args):
+        """Return previous list of items."""
+        page = self.cse.currentPage
+        fList = self.formatOutput(msg.args[0], page, 'previous')
+        return self.printResults(irc, fList)
+
+    def printResults(self, irc, L):
+        if len(L) > 1:
+            self.irc.replies(L)
         else:
-            output = fList[0]
-        self.irc.reply(output)
+            self.irc.reply(L[0])
+
+    def _test_feed(self, response):
+        """Testing purposes, feed a DResponse object from ./local/test.py"""
+        self._test_response = response
 
 Class = GoogleCSE
 

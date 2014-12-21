@@ -1,0 +1,54 @@
+[
+{
+ "error": {
+  "errors": [
+   {
+    "domain": "usageLimits",
+    "reason": "keyInvalid",
+    "message": "Bad Request"
+   }
+  ],
+  "code": 400,
+  "message": "Bad Request"
+ }
+},
+{
+ "error": {
+  "errors": [
+   {
+    "domain": "global",
+    "reason": "invalid",
+    "message": "Invalid Value"
+   }
+  ],
+  "code": 400,
+  "message": "Invalid Value"
+ }
+},
+{
+ "error": {
+  "errors": [
+   {
+    "domain": "global",
+    "reason": "Server error",
+    "message": "Server error"
+   }
+  ],
+  "code": 500,
+  "message": "Server error"
+ }
+},
+{
+ "error": {
+  "errors": [
+   {
+    "domain": "global",
+    "reason": "limit",
+    "message": "limit"
+   }
+  ],
+  "code": 403,
+  "message": "limit"
+ }
+}
+]
