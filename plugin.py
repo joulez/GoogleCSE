@@ -158,6 +158,8 @@ class GoogleCSE(callbacks.Plugin):
         return self.printResults(irc, fList)
 
     def printResults(self, irc, L):
+        if not L:
+            return
         if len(L) > 1:
             self.irc.replies(L)
         else:
