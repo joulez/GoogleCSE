@@ -147,9 +147,7 @@ class CSE(API):
     def next(self):
         if not self.pages:
             self._execute()
-            print('testtest')
             self.pages.next()
-            print('testtest')
         else:
             try:
                 self.pages.next()

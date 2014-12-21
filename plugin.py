@@ -65,19 +65,12 @@ class GoogleCSE(callbacks.Plugin):
             return self.registryValue('defaultEngine', channel)
         return self.registryValue('defaultEngine')
 
-<<<<<<< Updated upstream
-    def getAPIKey(self, channel):
-        if channel.startswith('#'):
-            apikey = self.registryValue('apikey', channel)
-        else:
-            apikey = self.registryValue('apikey')
-=======
     def getAPIKey(self):
         apikey = self.registryValue('apikey')
->>>>>>> Stashed changes
+        apikey = self.registryValue('apikey')
         if not apikey:
-            self.irc.error('Please add an API key to either the default or'
-                ' channel configuration.', Raise=True)
+            self.irc.error('Please add an API key to the default configuration.',
+                Raise=True)
         return apikey
 
     def setOpts(self, channel, opts):
@@ -121,19 +114,12 @@ class GoogleCSE(callbacks.Plugin):
                     ' configure a default engine for the channel')
 
         cse = GoogleAPI.CSE(apikey, engine, query, opts)
-        print('test')
         page = cse.next()
-        print('sf')
         fList = self.formatOutput(page, opts)
         if len(fList) > 1:
             self.irc.replies(fList)
         else:
             self.irc.reply(fList[0])
-
-    @wrap
-    def test(self, irc, msg, args, query):
-        """Test"""
-        pass
 
 Class = GoogleCSE
 
