@@ -169,7 +169,7 @@ class GoogleCSE(callbacks.Plugin):
     def previouspage(self, irc, msg, args):
         """Cue the previous page."""
         try:
-            page = self.cse.next()
+            page = self.cse.previous()
         except:
             return irc.error('No previous pages.')
         return irc.reply(format('Current page startIndex: %i',page.startIndex))
