@@ -46,6 +46,9 @@ def configure(advanced):
     from supybot.questions import expect, anything, something, yn
     conf.registerPlugin('GoogleCSE', True)
 
+class SafeLevels(registry.OnlySomeStrings):
+    validStrings = ('high', 'medium', 'off')
+
 
 GoogleCSE = conf.registerPlugin('GoogleCSE')
 # This is where your configuration variables (if any) should go.  For example:
@@ -67,7 +70,7 @@ conf.registerChannelValue(GoogleCSE, 'maxDisplayResults',
 conf.registerChannelValue(GoogleCSE, 'includeSnippet',
     registry.Boolean(False, _("""Display search result snippet in the output.""")))
 conf.registerChannelValue(GoogleCSE, 'safeLevel',
-    registry.String('medium', _("""Search results safe level. Default:
+    SafeLevels('medium', _("""Search results safe level. Default:
         medium.""")))
 
 # vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:

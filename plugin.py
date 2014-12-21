@@ -49,6 +49,9 @@ def validateEngine(irc, msg, args, state):
 
 addConverter('validateEngine', validateEngine)
 
+def isChannel(s):
+    return True if s.startswith('#') else False
+
 class GoogleCSE(callbacks.Plugin):
     """The GoogleCSE plugin enables searching via their CSEv1 API"""
     searchOpts = ('number', 'snippet', 'safe')
@@ -56,6 +59,7 @@ class GoogleCSE(callbacks.Plugin):
     def __init__(self, irc):
         self.__parent = super(GoogleCSE, self)
         self.__parent.__init__(irc)
+        self._test_response = None
 
     def _error(self, error):
         self.irc.error(error, Raise=True)
@@ -75,19 +79,25 @@ class GoogleCSE(callbacks.Plugin):
     def setOpts(self, channel, opts):
         d = {}
         d['number'] = self.registryValue('maxPageResults', channel)
+        d['maxDisplayResults'] = self.registryValue('maxDisplayResults',
+                channel)
         d['snippet'] = self.registryValue('includeSnippet', channel)
         d['safe'] = self.registryValue('safeLevel', channel)
+        d['maxPages'] = self.registryValue('maxPages', channel)
         for option, arg in opts:
             d[option] = arg
         return d
 
-    def formatOutput(self, page, opts):
+    def formatOutput(self, channel, page, opts):
         l = []
         ctr = 0
+        max = self.registryValue('maxDisplayResults')
+        if isChannel(channel):
+            max = self.registryValue('maxDisplayResults', channel)
         try:
-            while ctr < self.registryValue('maxDisplayResults', channel):
+            while ctr < max:
                 ctr += 1
-                item = page.items.next()
+                item = page.nextItem()
                 value = format('%s: %u', ircutils.bold(item.title), item.link)
                 if opts['snippet']:
                     value += format(' %s',(item.snippet))
@@ -95,6 +105,13 @@ class GoogleCSE(callbacks.Plugin):
         except:
             return l
         return l
+
+    def _next(self):
+        if self._test_response:
+            self.cse.response = self._test_response
+            self.cse._test_feed = True
+        return self.cse.next()
+        
 
     @wrap([getopts({'engine': 'somethingWithoutSpaces', 'number': 'Int',
         'snippet': ''}), 'text'])
@@ -112,13 +129,18 @@ class GoogleCSE(callbacks.Plugin):
             self._error('A search engine is required use --engine or'
                     ' configure a default engine for the channel')
 
-        cse = GoogleAPI.CSE(apikey, engine, query, opts)
-        page = cse.next()
-        fList = self.formatOutput(page, opts)
+        self.cse = GoogleAPI.CSE(query, opts, api_key=apikey, engine_id=engine)
+        page = self._next()
+        print(page.title)
+        fList = self.formatOutput(msg.args[0], page, opts)
         if len(fList) > 1:
             self.irc.replies(fList)
         else:
             self.irc.reply(fList[0])
+
+    def _test_feed(self, response):
+        """Testing purposes, feed a DResponse object from ./local/test.py"""
+        self._test_response = response
 
 Class = GoogleCSE
 

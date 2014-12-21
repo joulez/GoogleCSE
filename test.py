@@ -28,20 +28,36 @@
 
 
 ###
-
+import os
+import json
 from supybot.test import *
+from .local.test import DResponse
+
+dir = os.path.dirname(__file__)
+
+def consist(s):
+    if sys.version_info[0] < 3:
+        return s.encode()
+    return s
 
 class GoogleCSETestCase(PluginTestCase):
     plugins = ('GoogleCSE',)
     def testNoSearchEngine(self):
-        engine = '009672557423963828148:fo9s-8ac35w'
-        apikey = 'AIzaSyAHz6aupx6A9CnL_WRPrTHCgPfZdGDpKgs'
+        plugin = self.irc.getCallback('googlecse')
+        with open(os.path.join(dir, 'local', 'sampleResultsP1.json'), 'r') as f:
+            response = DResponse()
+            response.status_code = 200
+            response._json = json.loads(f.read())
+        plugin._test_feed(response)
+        engine = 'ENGINE'
+        apikey = 'API'
         self.assertNotError('config plugins.googlecse.apikey'
             ' {0}'.format(apikey))
         error = 'Error: A search engine is not configured for channel #test'
-        self.assertError('googlecse search foobar')
-        self.assertResponse('googlecse search --engine {0} symphony'
-                ' x'.format(engine),'')
+        self.assertError('googlecse search python docs')
+        self.assertNotError(consist('googlecse search --engine {0} python'
+            ' docs').format(consist(engine)))
+#        self.assertNotError('googlecse next')
 
 
 # vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:

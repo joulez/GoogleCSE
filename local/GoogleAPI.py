@@ -131,19 +131,19 @@ class API(dict):
 class CSE(API):
     """Custom Search Engine."""
     url = 'https://www.googleapis.com/customsearch/v1'
-    def __init__(self, query, opts, api_key=None, engineID=None):
+    _test_feed = False
+    def __init__(self, query, opts, api_key=None, engine_id=None):
         super(CSE, self).__init__(api_key)
-        self.setEngine(engineID)
+        self.setEngine(engine_id)
         self['q'] = query
         self.pages = Pages()
         self.response = None
-        self._test_feed = None
         self.maxPages = opts.setdefault('maxPages', 1)
 
-    def setEngine(self, engineID):
-        if engineID is None:
+    def setEngine(self, engine_id):
+        if engine_id is None:
             raise CSEAPIError('Engine ID cannot be None.')
-        self['cx'] = engineID
+        self['cx'] = engine_id
 
     @property
     def currentPage(self):
@@ -175,7 +175,7 @@ class CSE(API):
 
     def _execute(self):
         if self._test_feed:
-            self._test_feed = None
+            self._test_feed = False
         else:
             response = requests.get(self.url, params=self)
             self.response = response
