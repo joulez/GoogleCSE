@@ -163,7 +163,7 @@ class GoogleCSE(callbacks.Plugin):
             page = self.cse.next()
         except:
             return irc.error('No next pages.')
-        return irc.reply(format('Current page startIndex: %d',page.startIndex))
+        return irc.reply(format('Current page startIndex: %i',page.startIndex))
 
     @wrap
     def previouspage(self, irc, msg, args):
@@ -172,7 +172,7 @@ class GoogleCSE(callbacks.Plugin):
             page = self.cse.next()
         except:
             return irc.error('No previous pages.')
-        return irc.reply(format('Current page startIndex: %d',page.startIndex))
+        return irc.reply(format('Current page startIndex: %i',page.startIndex))
 
     def printResults(self, irc, L):
         if not L:
