@@ -13,6 +13,8 @@
 # limitations under the License.
 import sys
 import json
+import HTMLParser
+import urlparse
 
 from .exceptions import *
 from .utils import ItemIndexTree
@@ -22,10 +24,15 @@ try:
 except:
     raise ImportError('Please install the requests package')
 
+htmlparser = HTMLParser.HTMLParser()
+
 def recode(s):
     if sys.version_info[0] < 2:
         return s.encode()
     return s
+
+def reformat(s):
+    return recode(htmlparser.unescape(urlparse.unquote(s)))
 
 def searchEngine(engine, query, params, **kwargs):
     if engine == 'cse':
@@ -64,20 +71,20 @@ class BaseItems(ItemIndexTree):
     @property
     def title(self):
         if self.parent is None:
-            return self.current.data[self._title]
-        return self.data[self._title]
+            return reformat(self.current.data[self._title])
+        return reformat(self.data[self._title])
 
     @property
     def link(self):
         if self.parent is None:
-            return self.current.data[self._link]
-        return self.data[self._link]
+            return reformat(self.current.data[self._link])
+        return reformat(self.data[self._link])
 
     @property
     def snippet(self):
         if self.parent is None:
-            return self.current.data[self._snippet]
-        return self.data[self._snippet]
+            return reformat(self.current.data[self._snippet])
+        return reformat(self.data[self._snippet])
 
 
 class LegacyItems(BaseItems):
