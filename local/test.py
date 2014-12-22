@@ -1,8 +1,8 @@
 import sys
 import unittest
 import json
-from GoogleAPI import CSE, Legacy
-from exceptions import *
+from .GoogleAPI import CSE, Legacy
+from .exceptions import *
 
 def consist(s):
     if sys.version_info[0] < 3:
