@@ -41,6 +41,7 @@ class _Exceptions(Exception):
         else:
             self._template = value
 
+
 class GoogleAPIError(_Exceptions):
     def __init__(self, cls, response):
         _Exceptions.__init__(self)

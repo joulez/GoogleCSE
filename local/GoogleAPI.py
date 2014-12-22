@@ -105,6 +105,13 @@ class BasePages(ItemIndexTree):
         self.data = None
         self.items = None
     
+    def __repr__(self):
+        if self.parent is None:
+            return 'ROOT ItemIndex Current Item: '+self.current.__repr__()
+        else:
+            return '\"{0}\" startIndex: {1}'.format(self.title,
+                str(self.startIndex))
+    
     @property
     def currentItem(self):
         return self.items.current
@@ -169,12 +176,6 @@ class CSEPages(BasePages):
             self.data = data['queries']['request'][0]
             self.items = self.ItemsClass(items=data['items'])
 
-    def __repr__(self):
-        if self.parent is None:
-            return 'ROOT ItemIndex Current Item: '+self.current.__repr__()
-        else:
-            return '\"{0}\" startIndex: {1}'.format(self.title,
-                str(self.startIndex))
 
 class API(object):
     """API management class."""
@@ -189,6 +190,7 @@ class API(object):
         if False:
             raise APIError('API Key Invalid')
         return value
+
 
 class EngineBase(dict):
     """Base Engine class."""
@@ -248,7 +250,7 @@ class Legacy(EngineBase):
     def __init__(self, query, params, **kwargs):
         super(Legacy, self).__init__(query, params, **kwargs)
         self['v'] = '1.0'
-        self.setNumber(kwargs.get('number'))
+        self.setNumber(params.get('number'))
         self.pages = self.Pages()
 
     def setNumber(self, n):
@@ -275,7 +277,7 @@ class CSE(EngineBase):
         except:
             self.setEngine(None)
         
-        self.setNumber(kwargs.get('number'))
+        self.setNumber(params.get('number'))
         self.pages = self.Pages()
 
     def setEngine(self, engine_id):
