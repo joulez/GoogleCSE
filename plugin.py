@@ -138,9 +138,14 @@ class GoogleCSE(callbacks.Plugin):
             self.engine = searchEngine(self.opts['engineAPI'],
                 query, self.opts, api_key=apikey, 
                 engine_id=self.opts['engine'])
+            self.log.info(format('\"{0}\" Search Engine API created with'
+                ' custom engine ID \"{0}\"'), self.opts['engineAPI'],
+                self.opts['engine'])
         else:
             self.engine = searchEngine(self.opts['engineAPI'],
                     query, self.opts)
+            self.log.info(format('\"{0}\" Search Engine API initialized'),
+                    self.opts['engineAPI'])
         page = self._next()
         fList = self.formatOutput(msg.args[0], page, 'next')
         return self.printResults(irc, fList)

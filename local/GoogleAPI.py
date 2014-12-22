@@ -13,8 +13,12 @@
 # limitations under the License.
 import sys
 import json
-import HTMLParser
-import urlparse
+from xml.sax.saxutils import unescape
+
+if sys.version_info[0] < 3:
+    from urlparse import unquote
+else:
+    from urllib.parse import unquote
 
 from .exceptions import *
 from .utils import ItemIndexTree
@@ -24,15 +28,14 @@ try:
 except:
     raise ImportError('Please install the requests package')
 
-htmlparser = HTMLParser.HTMLParser()
-
 def recode(s):
-    if sys.version_info[0] < 2:
+    if sys.version_info[0] < 3:
         return s.encode()
     return s
 
 def reformat(s):
-    return recode(htmlparser.unescape(urlparse.unquote(s)))
+    extra = {'&quot;': '"', '&apos;': "'"}
+    return unescape(unquote(s), extra)
 
 def searchEngine(engine, query, params, **kwargs):
     if engine == 'cse':

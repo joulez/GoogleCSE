@@ -6,7 +6,7 @@ from .exceptions import *
 
 def consist(s):
     if sys.version_info[0] < 3:
-        s = s.encode('utf-8')
+        s = s.encode()
     return s
 
 
@@ -66,7 +66,7 @@ class TestCSE(unittest.TestCase):
             self.engine.response.status_code = 200
         feed()
         page = self.engine.next()
-        self.assertEqual(consist(page.title), 
+        self.assertEqual(page.title, 
                 consist('Google Custom Search - python docs'))
         self.assertEqual(len(self.engine.pages), 1)
         self.assertEqual(len(page.items), 10)
@@ -89,26 +89,26 @@ class TestCSE(unittest.TestCase):
         ##Item tests
         page = self.engine.currentPage
         item = page.nextItem()
-        self.assertRegexpMatches(consist(item.title),
+        self.assertRegexpMatches(item.title,
             consist('Overview.*Python.*documentation'))
         item = page.nextItem()
-        self.assertRegexpMatches(consist(item.title),
+        self.assertRegexpMatches(item.title,
             consist('Our.*Python\.org'))
         item = page.previousItem()
-        self.assertRegexpMatches(consist(item.title),
+        self.assertRegexpMatches(item.title,
             consist('Overview.*Python.*documentation'))
         self.assertRaises(IndexError, page.previousItem)
 
         #next page
         page = self.engine.next()
         item = page.nextItem()
-        self.assertRegexpMatches(consist(item.title),
+        self.assertRegexpMatches(item.title,
             consist('Python\sRuntime\sEnvironment.*Google\sCloud\sPlatform'))
 
         #previous page
         page = self.engine.previous()
         item = page.currentItem
-        self.assertRegexpMatches(consist(item.title),
+        self.assertRegexpMatches(item.title,
             consist('Overview.*Python.*documentation'))
 
     def testLegacyErrors(self):
@@ -149,13 +149,13 @@ class TestCSE(unittest.TestCase):
         self.engine.next()
         page = self.engine.currentPage
         item = page.nextItem()
-        self.assertRegexpMatches(consist(item.title),
+        self.assertRegexpMatches(item.title,
             consist('Overview.*Python.*documentation'))
         item = page.nextItem()
-        self.assertRegexpMatches(consist(item.title),
+        self.assertRegexpMatches(item.title,
             consist('Our.*Python\.org'))
         item = page.previousItem()
-        self.assertRegexpMatches(consist(item.title),
+        self.assertRegexpMatches(item.title,
             consist('Overview.*Python.*documentation'))
         self.assertRaises(IndexError, page.previousItem)
 
@@ -169,13 +169,13 @@ class TestCSE(unittest.TestCase):
         self.engine.next()
         page = self.engine.currentPage
         item = page.nextItem()
-        self.assertRegexpMatches(consist(item.title),
+        self.assertRegexpMatches(item.title,
             consist('Overview.*Python.*documentation'))
         item = page.nextItem()
-        self.assertRegexpMatches(consist(item.title),
+        self.assertRegexpMatches(item.title,
             consist('.*'))
         item = page.previousItem()
-        self.assertRegexpMatches(consist(item.title),
+        self.assertRegexpMatches(item.title,
             consist('Overview.*Python.*documentation'))
         self.assertRaises(IndexError, page.previousItem)
         #next page error
