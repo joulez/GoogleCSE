@@ -42,21 +42,22 @@ def consist(s):
 
 class GoogleCSETestCase(PluginTestCase):
     plugins = ('GoogleCSE',)
-    def testNoSearchEngine(self):
+    def test10NoSearchEngine(self):
         plugin = self.irc.getCallback('googlecse')
         with open(os.path.join(dir, 'local', 'sampleResultsP1.json'), 'r') as f:
             response = DResponse()
             response.status_code = 200
             response._json = json.loads(f.read())
         plugin._test_feed(response)
-        engine = 'ENGINE'
+        engineID = 'ENGINE'
         apikey = 'API'
+        self.assertNotError('config plugins.googlecse.engineapi cse')
         self.assertNotError('config plugins.googlecse.apikey'
             ' {0}'.format(apikey))
         error = 'Error: A search engine is not configured for channel #test'
         self.assertError('googlecse search python docs')
         self.assertNotError(consist('googlecse search --engine {0} python'
-            ' docs'))
+            ' docs').format(engineID))
         self.assertNotError('googlecse next')
         self.assertNotError('googlecse previous')
         plugin.engine.maxPages = 2
@@ -68,6 +69,18 @@ class GoogleCSETestCase(PluginTestCase):
         plugin._test_feed(response)
         self.assertNotError('config plugins.googlecse.maxpages 2')
         self.assertNotError('googlecse about')
+    
+    def test20LegacyEngine(self):
+        self.assertResponse('config plugins.googlecse.engineapi','cse')
+        self.assertNotError('config plugins.googlecse.engineapi legacy')
+        self.assertNotError('config plugins.googlecse.maxdisplayresults 1')
+        self.assertNotError('config plugins.googlecse.maxpageresults 5')
+        self.assertNotError('config plugins.googlecse.maxPages 2')
+        self.assertNotError('googlecse search python docs')
+        self.assertNotError('googlecse next')
+        self.assertNotError('googlecse previous')
+        self.assertNotError('googlecse nextpage')
+        self.assertNotError('googlecse previouspage')
 
 
 # vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:

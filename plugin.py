@@ -129,14 +129,17 @@ class GoogleCSE(callbacks.Plugin):
         """
         self.irc = irc
         self.setOpts(msg.args[0], opts)
-        apikey = self.getAPIKey()
-
-        if not self.opts.get('engine'):
-            self._error('A search engine is required use --engine or'
-                    ' configure a default engine for the channel')
-
-        self.engine = GoogleAPI.searchEngine(self.opts['engineAPI'], query, 
-                self.opts, api_key=apikey, engine_id=self.opts['engine'])
+        if self.opts['engineAPI'] == 'cse':
+            apikey = self.getAPIKey()
+            if not self.opts.get('engine'):
+                self._error('A search engine is required use --engine or'
+                        ' configure a default engine for the channel')
+            self.engine = GoogleAPI.searchEngine(self.opts['engineAPI'],
+                query, self.opts, api_key=apikey, 
+                engine_id=self.opts['engine'])
+        else:
+            self.engine = GoogleAPI.searchEngine(self.opts['engineAPI'],
+                    query, self.opts)
         page = self._next()
         fList = self.formatOutput(msg.args[0], page, 'next')
         return self.printResults(irc, fList)

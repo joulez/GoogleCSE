@@ -27,11 +27,12 @@ def recode(s):
         return s.encode()
     return s
 
-def searchEngine(engine, *args, **kwargs):
+def searchEngine(engine, query, params, **kwargs):
     if engine == 'cse':
-        return CSE(*args, **kwargs)
-    elif engine == 'legacy':
-        return Legacy(*args, **kwargs)
+        cls = CSE
+    else:
+        cls = Legacy
+    return cls(query, params, **kwargs)
 
 
 class BaseItems(ItemIndexTree):
@@ -193,11 +194,15 @@ class EngineBase(dict):
     """Base Engine class."""
     url = None
     _test_feed = False
+
     def __init__(self, query, params, **kwargs):
         self['q'] = query
         self.pages = None
         self.response = None
-        self.maxPages = kwargs.setdefault('maxPages', 1)
+        try:
+            self.maxPages = params.pop('maxPages')
+        except:
+            self.maxPages = 1
 
     def next(self):
         if not self.pages:
@@ -212,6 +217,11 @@ class EngineBase(dict):
             finally:
                 self.pages.next()
 
+        return self.pages.current
+    
+    def previous(self):
+        self.pages.previous()
+        self['start'] = self.pages.current.startIndex
         return self.pages.current
     
     @property
@@ -234,6 +244,7 @@ class Legacy(EngineBase):
     """Legacy Search Engine."""
     Pages = LegacyPages
     url = 'http://ajax.googleapis.com/ajax/services/search/web'
+
     def __init__(self, query, params, **kwargs):
         super(Legacy, self).__init__(query, params, **kwargs)
         self['v'] = '1.0'
@@ -252,14 +263,18 @@ class Legacy(EngineBase):
 
 
 class CSE(EngineBase):
-    """Custom Search Engine."""
+    """Google Custom Search Engine."""
     Pages = CSEPages
     url = 'https://www.googleapis.com/customsearch/v1'
-    _test_feed = False
+
     def __init__(self, query, params, **kwargs):
         super(CSE, self).__init__(query, params, **kwargs)
         self['api'] = API(**kwargs)()
-        self.setEngine(kwargs.get('engineID'))
+        try:
+            self.setEngine(kwargs.pop('engine_id'))
+        except:
+            self.setEngine(None)
+        
         self.setNumber(kwargs.get('number'))
         self.pages = self.Pages()
 
@@ -271,30 +286,6 @@ class CSE(EngineBase):
     def setNumber(self, n):
         if type(n) == int:
             self['number'] = n
-
-    @property
-    def start(self):
-        return self.get('start')
-
-    def next(self):
-        if not self.pages:
-            self._execute()
-            self.pages.next()
-        else:
-            try:
-                if self.maxPages > len(self.pages) and self.maxPages != 0:
-                    self['start'] = self.pages.current.startIndex + \
-                        self.pages.current.count
-                    self._execute()
-            finally:
-                self.pages.next()
-
-        return self.pages.current
-
-    def previous(self):
-        self.pages.previous()
-        self['start'] = self.pages.current.startIndex
-        return self.pages.current
 
     def eval_status_code(self, response):
         return response.status_code

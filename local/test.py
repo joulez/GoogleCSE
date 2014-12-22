@@ -20,7 +20,7 @@ class TestCSE(unittest.TestCase):
     def setUp(self):
         q = 'python docs'
         opts = {'number': 1} 
-        self.engine = CSE(q, opts, api_key='testkey', engineID='TestEngine')
+        self.engine = CSE(q, opts, api_key='testkey', engine_id='TestEngine')
 
     def testGoogleAPIErrors(self):
         with open('sample400Error.json', 'r') as f:
@@ -185,6 +185,7 @@ class TestCSE(unittest.TestCase):
         self.engine.maxPages = 2
         page = self.engine.next()
         self.assertEqual(page.startIndex, 4)
+        page = self.engine.previous()
 
 
 
