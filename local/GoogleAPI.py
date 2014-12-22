@@ -287,7 +287,7 @@ class CSE(EngineBase):
 
     def setNumber(self, n):
         if type(n) == int:
-            self['number'] = n
+            self['num'] = n
 
     def eval_status_code(self, response):
         return response.status_code
