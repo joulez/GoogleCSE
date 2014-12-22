@@ -74,7 +74,7 @@ class GoogleCSE(callbacks.Plugin):
                 Raise=True)
         return apikey
 
-    def setOpts(self, channel, opts):
+    def setOpts(self, channel, opts=None):
         if not isChannel(channel):
             channel = None
         self.opts['engine'] = self.registryValue('defaultEngine', channel)
@@ -85,8 +85,9 @@ class GoogleCSE(callbacks.Plugin):
         self.opts['safe'] = self.registryValue('safeLevel', channel)
         self.opts['maxPages'] = self.registryValue('maxPages', channel)
         self.opts['engineAPI'] = self.registryValue('engineAPI', channel)
-        for option, arg in opts:
-            self.opts[option] = arg
+        if opts:
+            for option, arg in opts:
+                self.opts[option] = arg
 
     def formatOutput(self, channel, page, nav):
         l = []
@@ -215,13 +216,16 @@ class GoogleCSE(callbacks.Plugin):
             Remove cache with <id>.
             """
     @wrap
-    def about(self, irc, *args):
+    def about(self, irc, msg, *args):
         """<about>
         Return information about the plugin.
         """
-        irc.reply(format('%s - Google Custom Search Engine plugin'
-            ' for the Limnoria IRC bot %u', 
+        self.irc = irc
+        self.setOpts(msg.args[0])
+        irc.reply(format('%s - Google Custom Search Engine plugin '
+            '(Engine API: %s) for the Limnoria IRC bot %u',
             ircutils.bold(self.__class__.__name__),
+            ircutils.bold(self.opts['engineAPI']),
             ircutils.bold(self.home)))
 
     def _test_feed(self, response):
