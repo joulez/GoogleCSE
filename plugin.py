@@ -27,7 +27,7 @@
 # POSSIBILITY OF SUCH DAMAGE.
 
 ###
-
+import re
 import supybot.utils as utils
 from supybot.commands import *
 import supybot.plugins as plugins
@@ -119,7 +119,9 @@ class GoogleCSE(callbacks.Plugin):
             self.engine.response = self._test_response
             self.engine._test_feed = True
         return self.engine.next()
-        
+
+    def evalQuery(self, query):
+        return re.sub('["\']', '', query.strip())
 
     @wrap([getopts({'engine': 'somethingWithoutSpaces', 'number': 'Int',
         'snippet': ''}), 'text'])
@@ -129,6 +131,8 @@ class GoogleCSE(callbacks.Plugin):
         See plugins.googlecse.defaultEngine
         """
         self.irc = irc
+        if not self.evalQuery(query):
+            return irc.error()
         self.setOpts(msg.args[0], opts)
         if self.opts['engineAPI'] == 'cse':
             apikey = self.getAPIKey()

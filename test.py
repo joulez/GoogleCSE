@@ -69,6 +69,8 @@ class GoogleCSETestCase(PluginTestCase):
         plugin._test_feed(response)
         self.assertNotError('config plugins.googlecse.maxpages 2')
         self.assertNotError('googlecse about')
+        plugin._test_feed(None)
+        self.assertError('googlecse search --engine ENGINE \'\' ')
     
     def test20LegacyEngine(self):
         self.assertResponse('config plugins.googlecse.engineapi','cse')
