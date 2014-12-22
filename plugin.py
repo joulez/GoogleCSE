@@ -96,7 +96,7 @@ class GoogleCSE(callbacks.Plugin):
         def setFormat(title, link):
             v= format('%s: %u', ircutils.bold(item.title), item.link)
             if self.opts['snippet']:
-                v += format(' %s',(item.snippet))
+                v += format(' %s',(item.snippet.replace('\n','')))
             return v
 
         if isChannel(channel):
