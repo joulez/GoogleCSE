@@ -269,7 +269,7 @@ class CSE(EngineBase):
 
     def __init__(self, query, params, **kwargs):
         super(CSE, self).__init__(query, params, **kwargs)
-        self['api'] = API(**kwargs)()
+        self['key'] = API(**kwargs)()
         try:
             self.setEngine(kwargs.pop('engine_id'))
         except:

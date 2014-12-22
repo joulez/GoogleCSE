@@ -187,7 +187,4 @@ class TestCSE(unittest.TestCase):
         self.assertEqual(page.startIndex, 4)
         page = self.engine.previous()
 
-
-
-
 # vim:set ts=4 sw=4 et tw=79:
