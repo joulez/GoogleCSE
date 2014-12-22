@@ -37,19 +37,26 @@ class _Exceptions(Exception):
     @template.setter
     def template(self, value):
         if sys.version < 3:
-            self._template = value.encode('utf-8')
+            self._template = value.encode()
         else:
             self._template = value
 
 class GoogleAPIError(_Exceptions):
-    def __init__(self, APIName, json):
+    def __init__(self, cls, response):
         _Exceptions.__init__(self)
-        self.template = '({0}) {1}: {2}: {3}'
-        self.message = self.template.format(APIName, json['error']['code'],
-            json['error']['message'], json['error']['errors'][0]['reason'])
+        json = response.json()
+        if cls.__name__ == 'CSE':
+            self.template = '({0}) {1}: {2}: {3}'
+            self.message = self.template.format(cls.__name__, json['error']['code'],
+                json['error']['message'], json['error']['errors'][0]['reason'])
+        elif cls.__name__ == 'Legacy':
+            self.template = '({0}) {1}: {2}'
+            self.message = self.template.format(cls.__name__, json['responseStatus'],
+                json['responseDetails'])
 
     def __str__(self):
         return repr(self.message)
+
 
 class APIError(Exception):
     def __init__(self, msg):

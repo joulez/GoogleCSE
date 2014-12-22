@@ -67,11 +67,6 @@ class GoogleCSE(callbacks.Plugin):
     def _error(self, error):
         self.irc.error(error, Raise=True)
 
-    def getEngine(self, channel):
-        if channel.startswith('#'):
-            return self.registryValue('defaultEngine', channel)
-        return self.registryValue('defaultEngine')
-
     def getAPIKey(self):
         apikey = self.registryValue('apikey')
         if not apikey:
@@ -80,12 +75,16 @@ class GoogleCSE(callbacks.Plugin):
         return apikey
 
     def setOpts(self, channel, opts):
+        if not isChannel(channel):
+            channel = None
+        self.opts['engine'] = self.registryValue('defaultEngine', channel)
         self.opts['number'] = self.registryValue('maxPageResults', channel)
         self.opts['maxDisplayResults'] = self.registryValue('maxDisplayResults',
                 channel)
         self.opts['snippet'] = self.registryValue('includeSnippet', channel)
         self.opts['safe'] = self.registryValue('safeLevel', channel)
         self.opts['maxPages'] = self.registryValue('maxPages', channel)
+        self.opts['engineAPI'] = self.registryValue('engineAPI', channel)
         for option, arg in opts:
             self.opts[option] = arg
 
@@ -130,15 +129,14 @@ class GoogleCSE(callbacks.Plugin):
         """
         self.irc = irc
         self.setOpts(msg.args[0], opts)
-        engine = self.getEngine(msg.args[0]) or self.opts.get('engine')
         apikey = self.getAPIKey()
 
-        if not engine:
+        if not self.opts.get('engine'):
             self._error('A search engine is required use --engine or'
                     ' configure a default engine for the channel')
 
-        self.engine = GoogleAPI.CSE(query, self.opts, api_key=apikey, 
-            engine_id=engine)
+        self.engine = GoogleAPI.searchEngine(self.opts['engineAPI'], query, 
+                self.opts, api_key=apikey, engine_id=self.opts['engine'])
         page = self._next()
         fList = self.formatOutput(msg.args[0], page, 'next')
         return self.printResults(irc, fList)
@@ -198,6 +196,21 @@ class GoogleCSE(callbacks.Plugin):
         """
         self.irc = irc
 
+    class cache(callbacks.Commands):
+        @wrap
+        def list(self, irc, msg, args):
+            """List search cache."""
+
+        @wrap
+        def add(self, irc, msg, args):
+            """Add current search result to the cache if not
+            already added."""
+
+        @wrap(['positiveInt'])
+        def remove(self, irc, msg, args, id):
+            """<id>
+            Remove cache with <id>.
+            """
     @wrap
     def about(self, irc, *args):
         """<about>

@@ -11,7 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+import sys
 import json
 
 from .exceptions import *
@@ -22,75 +22,98 @@ try:
 except:
     raise ImportError('Please install the requests package')
 
-class Items(ItemIndexTree):
-    """Request Page Item instance."""
+def recode(s):
+    if sys.version_info[0] < 2:
+        return s.encode()
+    return s
+
+def searchEngine(engine, *args, **kwargs):
+    if engine == 'cse':
+        return CSE(*args, **kwargs)
+    elif engine == 'legacy':
+        return Legacy(*args, **kwargs)
+
+
+class BaseItems(ItemIndexTree):
+    """Base Items Class."""
     def __init__(self, data=None, items=None):
-        super(Items, self).__init__()
+        ItemIndexTree.__init__(self)
         self.data = data
         if isinstance(items, list):
             for d in items:
-                self.append(Items(data=d))
-
+                self.append(self.__class__(data=d))
+        self._title = None
+        self._link = None
+        self._snippet = None
+    
     def __repr__(self):
         if self.parent is None:
-            return 'ROOT ItemIndex Current Item: '+self.current.__repr__()
+            return recode('ROOT ItemIndex Current Item: ')+self.current.__repr__()
         else:
-            return '\"{0}\"'.format(self.title)
-
+            return recode('\"{0}\"').format(self.title)
+    
     def next(self):
-        super(Items, self).next()
+        super(BaseItems, self).next()
         return self.current
 
     def previous(self):
-        super(Items, self).previous()
+        super(BaseItems, self).previous()
         return self.current
-
+    
     @property
     def title(self):
         if self.parent is None:
-            return self.current.data['title']
-        return self.data['title']
+            return self.current.data[self._title]
+        return self.data[self._title]
 
     @property
     def link(self):
         if self.parent is None:
-            return self.current.data['link']
-        return self.data['link']
+            return self.current.data[self._link]
+        return self.data[self._link]
 
     @property
     def snippet(self):
         if self.parent is None:
-            return self.current.data['snippet']
-        return self.data['snippet']
+            return self.current.data[self._snippet]
+        return self.data[self._snippet]
 
-class Pages(ItemIndexTree):
-    """Request Page instance."""
-    def __init__(self, data=None):
-        super(Pages, self).__init__()
-        if data:
-            self.data = data['queries']['request'][0]
-            self.items = Items(items=data['items'])
-        else:
-            self.data = None
-            self.items = None
 
-    def __repr__(self):
-        if self.parent is None:
-            return 'ROOT ItemIndex Current Item: '+self.current.__repr__()
-        else:
-            return '\"{0}\" startIndex: {1}'.format(self.title,
-                str(self.startIndex))
+class LegacyItems(BaseItems):
+    """Legacy Item Class."""
+    def __init__(self, data=None, items=None):
+        super(LegacyItems, self).__init__(data=data, items=items)
+        self._link = 'url'
+        self._title = 'titleNoFormatting'
+        self._snippet = 'content'
 
+
+class CSEItems(BaseItems):
+    """Request Page Item instance."""
+    def __init__(self, data=None, items=None):
+        super(CSEItems, self).__init__(data=data, items=items)
+        self._link = 'link'
+        self._title = 'title'
+        self._snippet = 'snippet'
+
+
+class BasePages(ItemIndexTree):
+    """Base class for Pages."""
+    def __init__(self):
+        super(BasePages, self).__init__()
+        self.data = None
+        self.items = None
+    
     @property
     def currentItem(self):
         return self.items.current
     
     def next(self):
-        super(Pages, self).next()
+        super(BasePages, self).next()
         return self.current
 
     def previous(self):
-        super(Pages, self).previous()
+        super(BasePages, self).previous()
         return self.current
 
     def nextItem(self):
@@ -98,7 +121,7 @@ class Pages(ItemIndexTree):
 
     def previousItem(self):
         return self.items.previous()
-
+    
     @property
     def startIndex(self):
         if self.parent is None:
@@ -116,38 +139,138 @@ class Pages(ItemIndexTree):
         if self.parent is None:
             return self.current.data['count']
         return self.data['count']
-        
-class API(dict):
+
+
+class LegacyPages(BasePages):
+    """Legacy Page instances."""
+    ItemsClass = LegacyItems
+
+    def __init__(self, data=None):
+        super(LegacyPages, self).__init__()
+        if data:
+            self.data = data['responseData']
+            self.items = self.ItemsClass(items=data['responseData']['results'])
+            cpi = self.data['cursor']['currentPageIndex']
+            if cpi > 0:
+                self.data['startIndex'] = cpi * len(self.items)
+            else:
+                self.data['startIndex'] = cpi
+            self.data['title'] = 'Legacy API Search Results'
+            self.data['count'] = len(self.items)
+    
+
+class CSEPages(BasePages):
+    """Request Page instances."""
+    ItemsClass = CSEItems
+    def __init__(self, data=None):
+        super(CSEPages, self).__init__()
+        if data:
+            self.data = data['queries']['request'][0]
+            self.items = self.ItemsClass(items=data['items'])
+
+    def __repr__(self):
+        if self.parent is None:
+            return 'ROOT ItemIndex Current Item: '+self.current.__repr__()
+        else:
+            return '\"{0}\" startIndex: {1}'.format(self.title,
+                str(self.startIndex))
+
+class API(object):
     """API management class."""
-    def __init__(self, apiKey):
-        self.setAPIkey(apiKey)
-    def setAPIkey(self, apiKey):
-        if apiKey is None:
-            raise APIError('API key is cannot be None.')
-        self['key'] = apiKey
-    def valdiate(self):
-        pass
-         
-class CSE(API):
+    def __init__(self, **kwargs):
+        if not kwargs.get('api_key'):
+            raise APIError('API key required.')
+        self.value = self.validate(kwargs['api_key'])
+    def __call__(self):
+        return self.value
+    
+    def validate(self, value):
+        if False:
+            raise APIError('API Key Invalid')
+        return value
+
+class EngineBase(dict):
+    """Base Engine class."""
+    url = None
+    _test_feed = False
+    def __init__(self, query, params, **kwargs):
+        self['q'] = query
+        self.pages = None
+        self.response = None
+        self.maxPages = kwargs.setdefault('maxPages', 1)
+
+    def next(self):
+        if not self.pages:
+            self._execute()
+            self.pages.next()
+        else:
+            try:
+                if self.maxPages > len(self.pages) and self.maxPages != 0:
+                    self['start'] = self.pages.current.startIndex + \
+                        self.pages.current.count
+                    self._execute()
+            finally:
+                self.pages.next()
+
+        return self.pages.current
+    
+    @property
+    def currentPage(self):
+        return self.pages.current
+
+    def _execute(self):
+        if self._test_feed:
+            self._test_feed = False
+        else:
+            response = requests.get(self.url, params=self)
+            self.response = response
+        if self.eval_status_code(self.response) == 200:
+            self.pages.append(self.Pages(self.response.json()))
+        else:
+            raise GoogleAPIError(self.__class__, self.response)
+
+
+class Legacy(EngineBase):
+    """Legacy Search Engine."""
+    Pages = LegacyPages
+    url = 'http://ajax.googleapis.com/ajax/services/search/web'
+    def __init__(self, query, params, **kwargs):
+        super(Legacy, self).__init__(query, params, **kwargs)
+        self['v'] = '1.0'
+        self.setNumber(kwargs.get('number'))
+        self.pages = self.Pages()
+
+    def setNumber(self, n):
+        if type(n) is not int:
+            return
+        if n > 8: #max limit
+            n = 8
+        self['rsz'] = n
+
+    def eval_status_code(self, response):
+        return response.json()['responseStatus']
+
+
+class CSE(EngineBase):
     """Custom Search Engine."""
+    Pages = CSEPages
     url = 'https://www.googleapis.com/customsearch/v1'
     _test_feed = False
-    def __init__(self, query, opts, api_key=None, engine_id=None):
-        super(CSE, self).__init__(api_key)
-        self.setEngine(engine_id)
-        self['q'] = query
-        self.pages = Pages()
-        self.response = None
-        self.maxPages = opts.setdefault('maxPages', 1)
+    def __init__(self, query, params, **kwargs):
+        super(CSE, self).__init__(query, params, **kwargs)
+        self['api'] = API(**kwargs)()
+        self.setEngine(kwargs.get('engineID'))
+        self.setNumber(kwargs.get('number'))
+        self.pages = self.Pages()
 
     def setEngine(self, engine_id):
         if engine_id is None:
             raise CSEAPIError('Engine ID cannot be None.')
         self['cx'] = engine_id
 
-    @property
-    def currentPage(self):
-        return self.pages.current
+    def setNumber(self, n):
+        if type(n) == int:
+            self['number'] = n
 
     @property
     def start(self):
@@ -173,13 +296,7 @@ class CSE(API):
         self['start'] = self.pages.current.startIndex
         return self.pages.current
 
-    def _execute(self):
-        if self._test_feed:
-            self._test_feed = False
-        else:
-            response = requests.get(self.url, params=self)
-            self.response = response
-        if self.response.status_code == 200:
-            self.pages.append(Pages(self.response.json()))
-        else:
-            raise GoogleAPIError('CSE', self.response.json())
+    def eval_status_code(self, response):
+        return response.status_code
+
+# vim:set ts=4 sw=4 et tw=79:
