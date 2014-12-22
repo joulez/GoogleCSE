@@ -50,7 +50,7 @@ class SafeLevels(registry.OnlySomeStrings):
     validStrings = ('high', 'medium', 'off')
 
 class EngineAPI(registry.OnlySomeStrings):
-    validStrings = ('default', 'legacy')
+    validStrings = ('cse', 'legacy')
 
 GoogleCSE = conf.registerPlugin('GoogleCSE')
 # This is where your configuration variables (if any) should go.  For example:
@@ -74,7 +74,7 @@ conf.registerChannelValue(GoogleCSE, 'includeSnippet',
 conf.registerChannelValue(GoogleCSE, 'safeLevel',
     SafeLevels('medium', _("""Search results safe level. Default: medium.""")))
 conf.registerChannelValue(GoogleCSE, 'engineAPI',
-    EngineAPI('default', _("""Select google engine mode. \"legacy\" sets the
+    EngineAPI('cse', _("""Select google engine mode. \"legacy\" sets the
     old google API \"cse\" sets the latest CSE API. Default: cse.""")))
 
 # vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:

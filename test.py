@@ -59,7 +59,7 @@ class GoogleCSETestCase(PluginTestCase):
             ' docs'))
         self.assertNotError('googlecse next')
         self.assertNotError('googlecse previous')
-        plugin.cse.maxPages = 2
+        plugin.engine.maxPages = 2
         with open(os.path.join(dir, 'local', 'sampleResultsP2.json'), 'r') as\
             f:
             response = DResponse()

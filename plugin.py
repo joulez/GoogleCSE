@@ -62,7 +62,7 @@ class GoogleCSE(callbacks.Plugin):
         self.__parent.__init__(irc)
         self._test_response = None
         self.opts = {}
-        self.cse = None
+        self.engine = None
 
     def _error(self, error):
         self.irc.error(error, Raise=True)
@@ -116,9 +116,9 @@ class GoogleCSE(callbacks.Plugin):
 
     def _next(self):
         if self._test_response:
-            self.cse.response = self._test_response
-            self.cse._test_feed = True
-        return self.cse.next()
+            self.engine.response = self._test_response
+            self.engine._test_feed = True
+        return self.engine.next()
         
 
     @wrap([getopts({'engine': 'somethingWithoutSpaces', 'number': 'Int',
@@ -137,7 +137,7 @@ class GoogleCSE(callbacks.Plugin):
             self._error('A search engine is required use --engine or'
                     ' configure a default engine for the channel')
 
-        self.cse = GoogleAPI.CSE(query, self.opts, api_key=apikey, 
+        self.engine = GoogleAPI.CSE(query, self.opts, api_key=apikey, 
             engine_id=engine)
         page = self._next()
         fList = self.formatOutput(msg.args[0], page, 'next')
@@ -146,16 +146,16 @@ class GoogleCSE(callbacks.Plugin):
     @wrap
     def next(self, irc, msg, args):
         """Return next list of items."""
-        if self.cse:
-            page = self.cse.currentPage
+        if self.engine:
+            page = self.engine.currentPage
             fList = self.formatOutput(msg.args[0], page, 'next')
             return self.printResults(irc, fList)
 
     @wrap
     def previous(self, irc, msg, args):
         """Return previous list of items."""
-        if self.cse:
-            page = self.cse.currentPage
+        if self.engine:
+            page = self.engine.currentPage
             fList = self.formatOutput(msg.args[0], page, 'previous')
             return self.printResults(irc, fList)
 
@@ -163,8 +163,8 @@ class GoogleCSE(callbacks.Plugin):
     def nextpage(self, irc, msg, args):
         """Cue the next page."""
         try:
-            if self.cse:
-                page = self.cse.next()
+            if self.engine:
+                page = self.engine.next()
             else:
                 return
         except:
@@ -175,8 +175,8 @@ class GoogleCSE(callbacks.Plugin):
     def previouspage(self, irc, msg, args):
         """Cue the previous page."""
         try:
-            if self.cse:
-                page = self.cse.previous()
+            if self.engine:
+                page = self.engine.previous()
             else:
                 return
         except:
