@@ -41,7 +41,7 @@ except ImportError:
     # without the i18n module
     _ = lambda x:x
 
-from .local import GoogleAPI
+from .local.GoogleAPI import searchEngine
 
 def validateEngine(irc, msg, args, state):
     """Validate engines."""
@@ -134,11 +134,11 @@ class GoogleCSE(callbacks.Plugin):
             if not self.opts.get('engine'):
                 self._error('A search engine is required use --engine or'
                         ' configure a default engine for the channel')
-            self.engine = GoogleAPI.searchEngine(self.opts['engineAPI'],
+            self.engine = searchEngine(self.opts['engineAPI'],
                 query, self.opts, api_key=apikey, 
                 engine_id=self.opts['engine'])
         else:
-            self.engine = GoogleAPI.searchEngine(self.opts['engineAPI'],
+            self.engine = searchEngine(self.opts['engineAPI'],
                     query, self.opts)
         page = self._next()
         fList = self.formatOutput(msg.args[0], page, 'next')
