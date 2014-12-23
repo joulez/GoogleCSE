@@ -167,14 +167,19 @@ class LegacyPages(BasePages):
         super(LegacyPages, self).__init__()
         if data:
             self.data = data['responseData']
-            self.items = self.ItemsClass(items=data['responseData']['results'])
-            cpi = self.data['cursor']['currentPageIndex']
+            if data['responseData']['results']:
+                self.items = self.ItemsClass(items=data['responseData']['results'])
+                self.data['count'] = len(self.items)
+                cpi = self.data['cursor']['currentPageIndex']
+            else:
+                self.data['count'] = 0
+                cpi = 0
+
             if cpi > 0:
                 self.data['startIndex'] = cpi * len(self.items)
             else:
                 self.data['startIndex'] = cpi
             self.data['title'] = 'Legacy API Search Results'
-            self.data['count'] = len(self.items)
     
 
 class CSEPages(BasePages):
@@ -184,7 +189,14 @@ class CSEPages(BasePages):
         super(CSEPages, self).__init__()
         if data:
             self.data = data['queries']['request'][0]
-            self.items = self.ItemsClass(items=data['items'])
+            try:
+                total = int(self.data['totalResults'])
+            except:
+                total = 0
+            if total > 0:
+                self.items = self.ItemsClass(items=data['items'])
+            else:
+                self.data['count'] = total
 
 
 class API(object):

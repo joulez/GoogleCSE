@@ -151,6 +151,9 @@ class GoogleCSE(callbacks.Plugin):
             self.log.info(format('\"%s\" Search Engine API initialized',
                     self.opts['engineAPI']))
         page = self._next()
+        print(page.count)
+        if page.count == 0:
+            return irc.reply('No results found.')
         fList = self.formatOutput(msg.args[0], page, 'next')
         return self.printResults(irc, fList)
 
@@ -160,7 +163,11 @@ class GoogleCSE(callbacks.Plugin):
         if self.engine:
             page = self.engine.currentPage
             fList = self.formatOutput(msg.args[0], page, 'next')
-            return self.printResults(irc, fList)
+            if fList:
+                return self.printResults(irc, fList)
+            return irc.error('No next item.')
+        else:
+            return irc.error('No active search.')
 
     @wrap
     def previous(self, irc, msg, args):
@@ -168,7 +175,11 @@ class GoogleCSE(callbacks.Plugin):
         if self.engine:
             page = self.engine.currentPage
             fList = self.formatOutput(msg.args[0], page, 'previous')
-            return self.printResults(irc, fList)
+            if fList:
+                return self.printResults(irc, fList)
+            return irc.error('No previous item.')
+        else:
+            return irc.error('No active search.')
 
     @wrap
     def nextpage(self, irc, msg, args):
@@ -195,8 +206,6 @@ class GoogleCSE(callbacks.Plugin):
         return irc.reply(format('Current page startIndex: %i',page.startIndex))
 
     def printResults(self, irc, L):
-        if not L:
-            return
         if len(L) > 1:
             self.irc.replies(L)
         else:
