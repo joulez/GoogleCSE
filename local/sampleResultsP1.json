@@ -15,7 +15,7 @@
     "inputEncoding": "utf8",
     "outputEncoding": "utf8",
     "safe": "off",
-    "cx": "009672557423963828148:fo9s-8ac35w"
+    "cx" : "USER_ID:ENGINE_ID"
    }
   ],
   "request": [
@@ -28,7 +28,7 @@
     "inputEncoding": "utf8",
     "outputEncoding": "utf8",
     "safe": "off",
-    "cx": "009672557423963828148:fo9s-8ac35w"
+    "cx" : "USER_ID:ENGINE_ID"
    }
   ]
  },
