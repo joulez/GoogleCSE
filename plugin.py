@@ -93,10 +93,15 @@ class GoogleCSE(callbacks.Plugin):
         l = []
         ctr = 0
         max = self.registryValue('maxDisplayResults')
+        def rebold(s):
+            return s.replace('<b>', '\x02').replace('</b>', '\x02')
+
         def setFormat(title, link):
             v= format('%s: %u', ircutils.bold(item.title), item.link)
             if self.opts['snippet']:
                 v += format(' %s',(item.snippet.replace('\n','')))
+                if self.opts['engineAPI'] == 'legacy':
+                    v = rebold(v)
             return v
 
         if isChannel(channel):
