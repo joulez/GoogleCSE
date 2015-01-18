@@ -162,6 +162,8 @@ class GoogleCSE(callbacks.Plugin):
         fList = self.formatOutput(msg.args[0], page, 'next')
         return self.printResults(irc, fList)
 
+    google = search
+
     @wrap
     def next(self, irc, msg, args):
         """Return next list of items."""
