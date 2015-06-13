@@ -50,4 +50,4 @@ Polling cache search terms via `__call__` and a `plugins.googleCSE.cacheRefresh`
 
 DISCLAIMER
 ----------
-This plugin is currently in alpha state.
+This plugin is currently used in a number of channels on freenode and undernet. And appears to be quite stable.
