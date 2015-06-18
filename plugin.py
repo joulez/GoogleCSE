@@ -165,7 +165,7 @@ class GoogleCSE(callbacks.Plugin):
 
     google = search
 
-    @wrap
+    @wrap([])
     def current(self, irc, msg, args):
         """Returns previously cached results."""
         if self._current:
