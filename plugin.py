@@ -62,7 +62,7 @@ class GoogleCSE(callbacks.Plugin):
         self.__parent.__init__(irc)
         self._test_response = None
         self.opts = {}
-        self.engine = None
+        self.engine = {}
         self._current = {} #cache current results
 
     def _error(self, error):
@@ -120,11 +120,11 @@ class GoogleCSE(callbacks.Plugin):
             return l
         return l
 
-    def _next(self):
+    def _next(self, caller):
         if self._test_response:
-            self.engine.response = self._test_response
-            self.engine._test_feed = True
-        return self.engine.next()
+            self.engine[caller].response = self._test_response
+            self.engine[caller]._test_feed = True
+        return self.engine[caller].next()
 
     def evalQuery(self, query):
         return re.sub('["\']', '', query.strip())
@@ -145,18 +145,18 @@ class GoogleCSE(callbacks.Plugin):
             if not self.opts.get('engine'):
                 self._error('A search engine is required use --engine or'
                         ' configure a default engine for the channel')
-            self.engine = searchEngine(self.opts['engineAPI'],
+            self.engine[msg.args[0]] = searchEngine(self.opts['engineAPI'],
                 query, self.opts, api_key=apikey, 
                 engine_id=self.opts['engine'])
             self.log.info(format('\"%s\" Search Engine API created with'
                 ' custom engine ID \"%s\"', self.opts['engineAPI'],
                 self.opts['engine']))
         else:
-            self.engine = searchEngine(self.opts['engineAPI'],
+            self.engine[msg.args[0]] = searchEngine(self.opts['engineAPI'],
                     query, self.opts)
             self.log.info(format('\"%s\" Search Engine API initialized',
                     self.opts['engineAPI']))
-        page = self._next()
+        page = self._next(msg.args[0])
         if page.count == 0:
             return irc.reply('No results found.')
         fList = self.formatOutput(msg.args[0], page, 'next')
@@ -179,8 +179,9 @@ class GoogleCSE(callbacks.Plugin):
     def next(self, irc, msg, args):
         """Return next list of items."""
         self.irc = irc
-        if self.engine:
-            page = self.engine.currentPage
+        eng = self.engine.get(msg.args[0])
+        if eng:
+            page = eng.currentPage
             fList = self.formatOutput(msg.args[0], page, 'next')
             if fList:
                 if isChannel(msg.args[0]):
@@ -194,8 +195,9 @@ class GoogleCSE(callbacks.Plugin):
     def previous(self, irc, msg, args):
         """Return previous list of items."""
         self.irc = irc
-        if self.engine:
-            page = self.engine.currentPage
+        eng = self.engine.get(msg.args[0])
+        if eng:
+            page = eng.currentPage
             fList = self.formatOutput(msg.args[0], page, 'previous')
             if fList:
                 if isChannel(msg.args[0]):
@@ -208,26 +210,26 @@ class GoogleCSE(callbacks.Plugin):
     @wrap
     def nextpage(self, irc, msg, args):
         """Cue the next page."""
-        try:
-            if self.engine:
-                page = self.engine.next()
-            else:
-                return
-        except:
-            return irc.error('No next pages.')
-        return irc.reply(format('Current page startIndex: %i',page.startIndex))
+        eng = self.engine.get(msg.args[0])
+        if eng:
+            try:
+                page = eng.next()
+                return irc.reply(format('Current page startIndex: %i',page.startIndex))
+            except:
+                return irc.error('No next pages.')
+        return irc.error('No active search.')
 
     @wrap
     def previouspage(self, irc, msg, args):
         """Cue the previous page."""
-        try:
-            if self.engine:
-                page = self.engine.previous()
-            else:
-                return
-        except:
-            return irc.error('No previous pages.')
-        return irc.reply(format('Current page startIndex: %i',page.startIndex))
+        eng = self.engine.get(msg.args[0])
+        if eng:
+            try:
+                page = eng.previous()
+                return irc.reply(format('Current page startIndex: %i',page.startIndex))
+            except:
+                return irc.error('No previous pages.')
+        return irc.error('No active search.')
 
     def printResults(self, L):
         if len(L) > 1:
