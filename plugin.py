@@ -63,7 +63,7 @@ class GoogleCSE(callbacks.Plugin):
         self._test_response = None
         self.opts = {}
         self.engine = None
-        self._current = None #cache current results
+        self._current = {} #cache current results
 
     def _error(self, error):
         self.irc.error(error, Raise=True)
@@ -159,8 +159,9 @@ class GoogleCSE(callbacks.Plugin):
         page = self._next()
         if page.count == 0:
             return irc.reply('No results found.')
-        self._current = self.formatOutput(msg.args[0], page, 'next')
-        return self.printResults(self._current)
+        fList = self.formatOutput(msg.args[0], page, 'next')
+        self._current[msg.args[0]] = fList
+        return self.printResults(fList)
 
     google = search
 
@@ -168,10 +169,11 @@ class GoogleCSE(callbacks.Plugin):
     def current(self, irc, msg, args):
         """Returns previously cached results."""
         self.irc = irc
-        if self._current:
-            return self.printResults(self._current)
+        L = self._current.get(msg.args[0])
+        if L:
+            return self.printResults(L)
         else:
-            return irc.error('No active search.')
+            return irc.error('No current search cache for %r.'%msg.args[0])
 
     @wrap
     def next(self, irc, msg, args):
@@ -181,7 +183,8 @@ class GoogleCSE(callbacks.Plugin):
             page = self.engine.currentPage
             fList = self.formatOutput(msg.args[0], page, 'next')
             if fList:
-                self._current = fList
+                if isChannel(msg.args[0]):
+                    self._current[msg.args[0]] = fList
                 return self.printResults(fList)
             return irc.error('No next item.')
         else:
@@ -195,7 +198,8 @@ class GoogleCSE(callbacks.Plugin):
             page = self.engine.currentPage
             fList = self.formatOutput(msg.args[0], page, 'previous')
             if fList:
-                self._current = fList
+                if isChannel(msg.args[0]):
+                    self._current[msg.args[0]] = fList
                 return self.printResults(fList)
             return irc.error('No previous item.')
         else:
