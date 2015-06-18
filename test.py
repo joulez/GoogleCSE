@@ -106,8 +106,8 @@ class GoogleCSETestCase(PluginTestCase):
         self.assertNotError('googlecse previous')
         self.assertNotError('googlecse previous')
         self.assertError('googlecse previous')
-    
-    def testResults(self):
+
+    def testCurrent(self):
         fpath = os.path.join(dir, 'local', 'sampleLegacyItems.json')
         with open(fpath, 'r') as f:
             response = DResponse(json.loads(f.read()))
@@ -116,15 +116,9 @@ class GoogleCSETestCase(PluginTestCase):
         self.assertNotError('config plugins.googlecse.engineapi legacy')
         self.assertNotError('config plugins.googlecse.maxpageresults 4')
         self.assertNotError('config plugins.googlecse.maxdisplayresults 1')
-        self.assertError('googlecse next')
-        self.assertNotError('googlecse google --engine ENGINE python docs')
-        self.assertNotError('googlecse next')
-        self.assertNotError('googlecse next')
-        self.assertError('googlecse next')
-        self.assertError('googlecse next')
-        self.assertNotError('googlecse previous')
-        self.assertNotError('googlecse previous')
-        self.assertError('googlecse previous')
+        self.assertError('googlecse current')
+        self.assertNotError('googlecse search --engine ENGINE python docs')
+        self.assertNotError('googlecse current')
     
     def test20LegacyNoResults(self):
         fpath = os.path.join(dir, 'local', 'sampleLegacyNoResults.json')

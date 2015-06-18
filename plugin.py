@@ -63,6 +63,7 @@ class GoogleCSE(callbacks.Plugin):
         self._test_response = None
         self.opts = {}
         self.engine = None
+        self._current = None #cache current results
 
     def _error(self, error):
         self.irc.error(error, Raise=True)
@@ -159,10 +160,18 @@ class GoogleCSE(callbacks.Plugin):
         print(page.count)
         if page.count == 0:
             return irc.reply('No results found.')
-        fList = self.formatOutput(msg.args[0], page, 'next')
-        return self.printResults(irc, fList)
+        self._current = self.formatOutput(msg.args[0], page, 'next')
+        return self.printResults(irc, self._current)
 
     google = search
+
+    @wrap
+    def current(self, irc, msg, args):
+        """Returns previously cached results."""
+        if self._current:
+            return self.printResults(irc, self._current)
+        else:
+            return irc.error('No active search.')
 
     @wrap
     def next(self, irc, msg, args):
