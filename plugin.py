@@ -180,6 +180,7 @@ class GoogleCSE(callbacks.Plugin):
             page = self.engine.currentPage
             fList = self.formatOutput(msg.args[0], page, 'next')
             if fList:
+                self._current = fList
                 return self.printResults(irc, fList)
             return irc.error('No next item.')
         else:
@@ -192,6 +193,7 @@ class GoogleCSE(callbacks.Plugin):
             page = self.engine.currentPage
             fList = self.formatOutput(msg.args[0], page, 'previous')
             if fList:
+                self._current = fList
                 return self.printResults(irc, fList)
             return irc.error('No previous item.')
         else:
