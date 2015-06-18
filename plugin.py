@@ -132,7 +132,8 @@ class GoogleCSE(callbacks.Plugin):
     @wrap([getopts({'engine': 'somethingWithoutSpaces', 'number': 'Int',
         'snippet': ''}), 'text'])
     def search(self, irc, msg, args, opts, query):
-        """<query>
+        """[--engine <CSE Code>] [--number <value>] [--snippet] query
+
         Standard basic search. Uses the channel configured engine by default.
         See plugins.googlecse.defaultEngine
         """
