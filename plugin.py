@@ -157,31 +157,32 @@ class GoogleCSE(callbacks.Plugin):
             self.log.info(format('\"%s\" Search Engine API initialized',
                     self.opts['engineAPI']))
         page = self._next()
-        print(page.count)
         if page.count == 0:
             return irc.reply('No results found.')
         self._current = self.formatOutput(msg.args[0], page, 'next')
-        return self.printResults(irc, self._current)
+        return self.printResults(self._current)
 
     google = search
 
-    @wrap([])
+    @wrap
     def current(self, irc, msg, args):
         """Returns previously cached results."""
+        self.irc = irc
         if self._current:
-            return self.printResults(irc, self._current)
+            return self.printResults(self._current)
         else:
             return irc.error('No active search.')
 
     @wrap
     def next(self, irc, msg, args):
         """Return next list of items."""
+        self.irc = irc
         if self.engine:
             page = self.engine.currentPage
             fList = self.formatOutput(msg.args[0], page, 'next')
             if fList:
                 self._current = fList
-                return self.printResults(irc, fList)
+                return self.printResults(fList)
             return irc.error('No next item.')
         else:
             return irc.error('No active search.')
@@ -189,12 +190,13 @@ class GoogleCSE(callbacks.Plugin):
     @wrap
     def previous(self, irc, msg, args):
         """Return previous list of items."""
+        self.irc = irc
         if self.engine:
             page = self.engine.currentPage
             fList = self.formatOutput(msg.args[0], page, 'previous')
             if fList:
                 self._current = fList
-                return self.printResults(irc, fList)
+                return self.printResults(fList)
             return irc.error('No previous item.')
         else:
             return irc.error('No active search.')
@@ -223,7 +225,7 @@ class GoogleCSE(callbacks.Plugin):
             return irc.error('No previous pages.')
         return irc.reply(format('Current page startIndex: %i',page.startIndex))
 
-    def printResults(self, irc, L):
+    def printResults(self, L):
         if len(L) > 1:
             self.irc.replies(L)
         else:
