@@ -57,12 +57,14 @@ GoogleCSE = conf.registerPlugin('GoogleCSE')
 # conf.registerGlobalValue(GoogleCSE, 'someConfigVariableName',
 #     registry.Boolean(False, _("""Help for someConfigVariableName.""")))
 conf.registerGlobalValue(GoogleCSE, 'apikey',
-    registry.String('', _("""API key provided by google for API access""")))
+    registry.String('', _("""API key provided by google for API access"""),
+        private=True))
 conf.registerGlobalValue(GoogleCSE, 'engines',
     registry.CommaSeparatedListOfStrings('', _("""List of available Custom
         Search Engines.""")))
 conf.registerChannelValue(GoogleCSE, 'defaultEngine',
-    registry.String('', _("""Default Custom Search Engine for channel.""")))
+    registry.String('', _("""Default Custom Search Engine for channel."""),
+        private=True))
 conf.registerChannelValue(GoogleCSE, 'maxPageResults',
     registry.Integer(10, _("""Maximum number of page results to fetch.""")))
 conf.registerChannelValue(GoogleCSE, 'maxPages',
