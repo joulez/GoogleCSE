@@ -25,7 +25,7 @@ class _Exceptions(Exception):
 
     @message.setter
     def message(self, value):
-        if sys.version < 3:
+        if sys.version_info[0] < 3:
             self._message = value.encode('utf-8')
         else:
             self._message = value
@@ -36,7 +36,7 @@ class _Exceptions(Exception):
 
     @template.setter
     def template(self, value):
-        if sys.version < 3:
+        if sys.version_info[0] < 3:
             self._template = value.encode()
         else:
             self._template = value
